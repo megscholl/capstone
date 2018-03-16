@@ -5,107 +5,29 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>CAPSTONE HTML &amp; CSS DESIGN</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-</head>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+
+  </head>
 <body>
     <h1>Reso</h1>
-        <h3>Create, edit, delete, and check-in to your reservations all in one place</h3>
-        <br>
-    <h4>Make a reservation</h4>
-    <form>
-            <div class="form-group">
-                    <label for="sel1">Select a Restaurant:</label>
-                    <select class="form-control" id="sel1">
-                      <option>Barcelona</option>
-                      <option>BrickTop's</option>
-                      <option>J.Alexander's</option>
-                      <option>Maggiano's</option>
-                      <option>Taco Mamacita</option>
-                    </select>
-                  </div>
+    <div id="primary-container" class="flex-container">
 
-                  <form>
-                        <div class="form-row">
-                        <div class="form-group">
-                          <label for="inputCity">City</label>
-                          <input type="text" class="form-control" id="inputCity" placeholder="Enter city">
-                        </div>
+      <div class="container">
+        <img src="images/food1.jpg" width="531.2" height="372" class="centered opaque">
+        <div class="center-script">Check in to your reservation now!</div>
+      </div>
 
-                        <div class="form-group col-md-6">
-                                <label type="date" for="reservationTime">Date of reservation: </label>
-                                <input type="date" class="form-control" id="reservationTime">
-                        </div>
+      <div class="container">
+        <img src="images/mimosas.jpg" width="531.2" height="372" class="centered opaque">
+        <div class="center-script">I know where I'd like to eat.<br>Let's make a reservation!</div>
+      </div>
 
-                        
-
-                        <button type="submit" class="btn btn-primary">Make Your Reservation</button>
-                  </form>
-    <form>
-        Date for reservation: <input type="date">
-        Time for reservation: <input type="time"><br>
-        How many in your party? <input type="number">
-        We suggest for parties of 5 or more to call the restaurant.
-        <br>
-        Name: <input type="text">
-        Email: <input type="email">
-        Phone number: <input type="tel">
-    </form>
-    
-    <br>
-
-
-    <div class="row">
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/w3images/lights.jpg">
-                  <img src="images/barcelona.jpg" alt="Lights" width="230" height="190">
-                  <div class="caption">
-                    <p>Barcelona</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/w3images/nature.jpg">
-                  <img src="images/bricktops.jpg" alt="Nature"  width="230" height="190">
-                  <div class="caption">
-                    <p>BrickTop's</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/w3images/fjords.jpg">
-                  <img src="images/js.jpg" alt="Fjords" width="230" height="190">
-                  <div class="caption">
-                    <p>JAlexander's</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-              <div class="thumbnail">
-                <a href="/w3images/fjords.jpg">
-                  <img src="images/maggianos.jpg" alt="Maggiano's Little Italy"  width="230" height="190">
-                  <div class="caption">
-                    <p>Maggiano's Little Italy</p>
-                  </div>
-                </a>
-              </div>
-            </div>
-            <div class="col-md-4">
-                    <div class="thumbnail">
-                      <a href="/w3images/fjords.jpg">
-                        <img src="images/mamacita.jpg" alt="Taco Mamacita's"  width="230" height="190">
-                        <div class="caption">
-                          <p>Taco Mamacita Edgehill</p>
-                        </div>
-                      </a>
-                    </div>
-                  </div>
-        </div>
-
+    </div>
+  <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  <script src="dist/app.js"></script>
 </body>
 </html>
