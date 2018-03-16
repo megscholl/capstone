@@ -1,0 +1,45 @@
+{
+    "restaurants": [
+      {
+        "id": 1,
+        "restaurant": "Barcelona Wine Bar Edgehill",
+        "url": "url('../images/barcelona.jpg')"
+      }, {
+        "id": 2,
+        "restaurant": "BrickTop's West End",
+        "url": "url('../images/bricktops.jpg')"
+      }, {
+        "id": 3,
+        "restaurant": "Caviar & Bananas",
+        "url": "url('../images/caviarbananas.jpg')"
+      }, {
+        "id": 4,
+        "restaurant": "Husk",
+        "url": "url('../images/husk.jpg')"
+      }, {
+        "id": 5,
+        "restaurant": "Merchants",
+        "url": "url('../images/merchants.jpg')"
+      }, {
+        "id": 6,
+        "restaurant": "PM",
+        "url": "url('../images/pm.jpg')"
+      }, {
+        "id": 7,
+        "restaurant": "Sambuca",
+        "url": "url('../images/sambuca.jpg')"
+      }, {
+        "id": 8,
+        "restaurant": "Smiling Elephant",
+        "url": "url('../images/smilingelephant.jpg')"
+      }, {
+        "id": 9,
+        "restaurant": "Valentino's",
+        "url": "url('../images/valentinos.jpg')"
+      }, {
+        "id": 10,
+        "restaurant": "Watermark",
+        "url": "url('../images/watermark.jpg')"
+      }
+    ]
+}

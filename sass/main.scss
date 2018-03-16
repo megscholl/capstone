@@ -1,0 +1,62 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen');
+@import url('https://fonts.googleapis.com/css?family=Satisfy');
+
+
+// $header-font: ;
+// $text-font: ;
+$red: #A50104;
+$white: #FFFBF9;
+$black: #1E1E24;
+$yellow: #EDCF6D;
+$green: #669672;
+
+body {
+    background-color: $white;
+    color: $black;
+}
+
+h1 {
+    font-family: 'Satisfy', cursive;
+    font-size: 80px;
+    color: $red;
+    text-align: center;
+    padding: .5em;
+}
+
+form {
+    font-family: 'Oxygen', helvetica;
+    font-size: 16px;
+    background-image: url('../images/food1.jpg');
+    background-repeat: no-repeat;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-control {
+    opacity: 0.7;
+}
+
+.centered {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    min-width: 30%;
+}
+
+.opaque {
+    opacity: 0.4;
+}
+
+.flex-container {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+.center-script {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: $black;
+}
