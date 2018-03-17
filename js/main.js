@@ -1,10 +1,22 @@
 "use strict";
-let $ = require('../lib/node_modules/jquery');
-let googleAuth = require('./googleAuth');
+let $ = require('../lib/node_modules/jquery'),
+    login = require('./user'),
+    configure = require('./configure'), 
+    firebaseKey = require('./firebaseKey'),
+    makeReservation = require('./makeReservation'),
+    upcomingResos = require('./userResos');
 
 
 $("#login-btn").click(function() {
     console.log("Login button has been clicked");
+    login.logInGoogle()
+    .then((result) => {
+      console.log("result from login -", result.user.uid);
+      login.setUser(result.user.uid);
+    //   $("#auth-btn").addClass("is-hidden");
+    //   $("#logout").removeClass("is-hidden");
+    //   loadSongsToDOM();
+    });
 });
 
 
