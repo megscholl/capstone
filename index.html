@@ -9,21 +9,54 @@
     <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
 
   </head>
+
+
+
+
+
 <body>
-    <h1>Reso</h1>
-    <div id="primary-container" class="flex-container">
 
-      <div class="container">
-        <img src="images/food1.jpg" width="531.2" height="372" class="centered opaque">
-        <div class="center-script">Check in to your reservation now!</div>
-      </div>
 
-      <div class="container">
-        <img src="images/mimosas.jpg" width="531.2" height="372" class="centered opaque">
-        <div class="center-script">I know where I'd like to eat.<br>Let's make a reservation!</div>
-      </div>
+    <header>
+        <nav class="navbar navbar-light bg-light">
+          <div class="col-md-4 mx-auto">
+            <h1>Reso</h1> 
+            <button type="button" class="btn" style="margin-left: 80%">Login</button>
+          </div>
+        </nav>
+    </header>
 
+
+
+    <div id="body-container">
+
+        <div id="upcomingReservations"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
+
+
+    <div class="container">
+      <a href="files/reservation.html">
+        <img src="images/mimosas.jpg" width="431" height="280" class="centered opaque rounded mx-auto d-block">
+        <div class="center-script" style="text-align: center">Make a reservation!</div>
+      </a>
     </div>
+    <div class="container"><a href="files/checkin.html">
+        <img src="images/food1.jpg" width="431" height="280" class="centered opaque rounded mx-auto d-block">
+        <div class="center-script" style="text-align: center">Check in to your reservation!</div>
+      </a>
+    </div>
+
+
+    <div id="restaurants"></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
+
+
+
+  </div>
+
+
+
+
+
+
   <script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
   <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
