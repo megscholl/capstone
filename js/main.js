@@ -1,6 +1,11 @@
 "use strict";
+let $ = require('../lib/node_modules/jquery');
+let googleAuth = require('./googleAuth');
 
 
+$("#login-btn").click(function() {
+    console.log("Login button has been clicked");
+});
 
 
 // FUNCTION PLANNING
