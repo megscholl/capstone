@@ -26,7 +26,7 @@ function getRestaurants(user) {
             console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant, rd[i].url);
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
-            showAll += `<article><img src="${image}" width="180" height="140"><h3>${restaurants}</h3></article>`;
+            showAll += `<article><img src="${image}" width="200" height="140"><h3>${restaurants}</h3></article>`;
         }
                     showRestaurants.innerHTML = showAll;
 
