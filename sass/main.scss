@@ -69,13 +69,22 @@ form {
     flex-direction: row;
     margin-right: auto !important;
     margin-left: auto !important;
-    width: 35%;
+    width: 80%;
 }
 
-.center-script {
+.left-script {
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 45%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+    font-size: 30px;
+    color: $black;
+    font-weight: bold;
+}
+.right-script {
+    position: absolute;
+    top: 45%;
+    left: 70%;
     transform: translate(-50%, -50%);
     font-size: 30px;
     color: $black;
@@ -87,5 +96,10 @@ form {
 // }
 
 .btn {
+    cursor: pointer;
+}
+
+#makeReservation,
+#checkIn {
     cursor: pointer;
 }
