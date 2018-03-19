@@ -5,7 +5,8 @@ let $ = require('../lib/node_modules/jquery'),
     firebaseKey = require('./firebaseKey'),
     makeReservation = require('./makeReservation'),
     upcomingResos = require('./userResos'),
-    postUID = require('./postUsertoFB');
+    postUID = require('./postUsertoFB'),
+    interaction = require('./interaction');
 
     login.logOut();
 
@@ -27,7 +28,7 @@ let showRestaurants = document.getElementById("restaurants");
 
 let showAll;
 function showAllRestaurants() {
-    console.log("showing all restaurants");
+    console.log("showing all restaurants", interaction.getRestaurants());
 
     showAll = `
     RESTAURANTS WILL SHOW HERE
