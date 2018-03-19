@@ -3,6 +3,8 @@
 let $ = require('jquery'),
     firebase = require("./configure");
 
+let restaurantData = [];
+
 function getRestaurants(user) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/restaurants.json`,
@@ -13,4 +15,13 @@ function getRestaurants(user) {
     });
   }
 
-  module.exports = {getRestaurants};
+  function loopRestaurants() {
+    getRestaurants().then((rd) => {
+        for(var i = 0; i < rd.length; i++) {
+            console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant);
+        }
+    });
+}
+loopRestaurants();
+
+  module.exports = {getRestaurants, loopRestaurants};
