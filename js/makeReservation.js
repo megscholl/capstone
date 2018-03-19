@@ -89,6 +89,3 @@ $("#makeReservation").click(function() {
     console.log("load the DOM with a reservation - function (renderReservationForm)");
     reservationForm();
 });
-
-
-// module.exports = {reservationForm};
