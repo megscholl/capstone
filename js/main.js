@@ -4,20 +4,38 @@ let $ = require('../lib/node_modules/jquery'),
     configure = require('./configure'), 
     firebaseKey = require('./firebaseKey'),
     makeReservation = require('./makeReservation'),
-    upcomingResos = require('./userResos');
+    upcomingResos = require('./userResos'),
+    postUID = require('./postUsertoFB');
 
+    login.logOut();
 
 $("#login-btn").click(function() {
-    console.log("Login button has been clicked");
+    // console.log("Login button has been clicked");
     login.logInGoogle()
     .then((result) => {
       console.log("result from login -", result.user.uid);
-      login.setUser(result.user.uid);
+      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid));
     //   $("#auth-btn").addClass("is-hidden");
     //   $("#logout").removeClass("is-hidden");
     //   loadSongsToDOM();
     });
 });
+
+
+
+let showRestaurants = document.getElementById("restaurants");
+
+let showAll;
+function showAllRestaurants() {
+    console.log("showing all restaurants");
+
+    showAll = `
+    RESTAURANTS WILL SHOW HERE
+    `;
+    showRestaurants.innerHTML = showAll;
+}
+showAllRestaurants();
+
 
 
 // FUNCTION PLANNING
