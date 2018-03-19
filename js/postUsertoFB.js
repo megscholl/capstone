@@ -6,10 +6,11 @@ let $ = require('../lib/node_modules/jquery'),
     user = require('./user');
 
 
-let buildUserObject = (userName, userId) => {
+let buildUserObject = (userName, userId, userImage) => {
     let userObject = {
         Name: userName, 
-        uid: userId
+        uid: userId,
+        photo: userImage
     };
     return userObject;
 };

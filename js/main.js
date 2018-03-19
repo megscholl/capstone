@@ -6,7 +6,7 @@ let $ = require('../lib/node_modules/jquery'),
     makeReservation = require('./makeReservation'),
     upcomingResos = require('./userResos'),
     postUID = require('./postUsertoFB'),
-    interaction = require('./interaction');
+    restaurants = require('./restaurants');
 
     login.logOut();
 
@@ -15,27 +15,12 @@ $("#login-btn").click(function() {
     login.logInGoogle()
     .then((result) => {
       console.log("result from login -", result.user.uid);
-      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid));
+      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
     //   $("#auth-btn").addClass("is-hidden");
     //   $("#logout").removeClass("is-hidden");
     //   loadSongsToDOM();
     });
 });
-
-
-
-let showRestaurants = document.getElementById("restaurants");
-
-let showAll;
-function showAllRestaurants() {
-    console.log("showing all restaurants", interaction.getRestaurants());
-
-    showAll = `
-    RESTAURANTS WILL SHOW HERE
-    `;
-    showRestaurants.innerHTML = showAll;
-}
-showAllRestaurants();
 
 
 

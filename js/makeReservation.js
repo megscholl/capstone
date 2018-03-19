@@ -1,7 +1,7 @@
 "use strict";
 let $ = require('../lib/node_modules/jquery'),
     indexContainer = document.getElementById("body-container"),
-    interaction = require('./interaction');
+    restaurants = require('./restaurants');
 
 console.log("makeReservation file is coming through");
 
