@@ -26,9 +26,9 @@ function getRestaurants(user) {
             console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant, rd[i].url);
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
-            showAll += `<article><img src="${image}" width="200" height="140"><h3>${restaurants}</h3></article>`;
+            showAll += `<li class="restList"><img src="${image}" width="200" height="140" style="float: left"><h3>${restaurants}</h3>hours hours hours<br><a href="#">Make a reservation now</a></li><br><br><br><br>`;
         }
-                    showRestaurants.innerHTML = showAll;
+              showRestaurants.innerHTML = showAll;
 
     });
 }  

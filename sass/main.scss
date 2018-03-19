@@ -47,8 +47,8 @@ form {
 }
 
 .list-restaurants {
-    margin-left: 10em;
-    margin-right: 5em;
+    margin-left: 30%;
+    margin-right: 30%;
 }
 
 .btn {
@@ -99,6 +99,10 @@ form {
     font-size: 20px;
     color: $black;
     font-weight: bold;
+}
+
+.restList {
+    list-style-type: none;
 }
 
 // .body-container {

@@ -23,6 +23,19 @@ $("#login-btn").click(function() {
 });
 
 
+// CALL TO ACTION BUTTONS ON INDEX
+let showCalls = document.getElementById("cta-buttons");
+let callButtons;
+function ctaButtons() {
+    callButtons = `<img src="../images/mimosas.jpg"  id="makeReservation" width="231" height="180" class="centered opaque rounded mx-auto d-block">
+    <div class="left-script" style="text-align: center">Make a reservation!</div>
+    <img src="images/food1.jpg" id="checkIn" width="231" height="180" class="centered opaque rounded mx-auto d-block">
+    <div class="right-script" style="text-align: center">Check-in <br>to your reservation!</div>`;
+
+    showCalls.innerHTML = callButtons;
+}
+ctaButtons();
+
 
 // FUNCTION PLANNING
 
