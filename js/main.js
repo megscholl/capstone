@@ -3,19 +3,21 @@ let $ = require('../lib/node_modules/jquery'),
     login = require('./user'),
     configure = require('./configure'), 
     firebaseKey = require('./firebaseKey'),
+    interactions = require('./interaction'),
+    restaurants = require('./restaurants'),
     makeReso = require('./makeReservation'),
     upcomingResos = require('./userResos'),
-    postUID = require('./postUsertoFB'),
-    restaurants = require('./restaurants');
+    checkin = require('./checkin');
 
     login.logOut();
+    restaurants.loopRestaurants();
 
 $("#login-btn").click(function() {
     // console.log("Login button has been clicked");
     login.logInGoogle()
     .then((result) => {
-      console.log("result from login -", result.user.uid);
-      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
+    //   console.log("result from login -", result.user.uid);
+      interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
     //   $("#auth-btn").addClass("is-hidden");
     //   $("#logout").removeClass("is-hidden");
     //   loadSongsToDOM();
@@ -23,25 +25,27 @@ $("#login-btn").click(function() {
 });
 
 
-$("#makeReservation").click(function() {
-    console.log("load the DOM with a reservation - function (renderReservationForm)");
-    makeReso.reservationForm();
-});
 
-// CALL TO ACTION BUTTONS ON INDEX
-// // COME BACK TO THIS BECAUSE IT IS NOT RENDERING THE DIV WITH THE FORM
 
-// let showCalls = document.getElementById("cta-buttons");
-// let callButtons;
-// function ctaButtons() {
-//     callButtons = `<img src="../images/mimosas.jpg"  id="makeReservation" width="231" height="180" class="centered opaque rounded mx-auto d-block">
-//     <div class="left-script" style="text-align: center">Make a reservation!</div>
-//     <img src="images/food1.jpg" id="checkIn" width="231" height="180" class="centered opaque rounded mx-auto d-block">
-//     <div class="right-script" style="text-align: center">Check-in <br>to your reservation!</div>`;
+let selectOne;
+let selectRestaurant = document.getElementById("select-restaurant");
+function restaurantOptions() {
+    restaurants.getRestaurants().then((select) => {
+    for(var j = 0; j < select.length; j++) {
+      var selectRest = select[j].restaurant;
+      var rID = select[j].id;
+    //   console.log("selections for restaurants: ", selectRest, rID);
+      selectOne += `<option id="${rID}" value="${selectRest}">${selectRest}</option>`;
+    }
+    selectRestaurant.innerHTML = selectOne;
+  });
+}
+restaurantOptions();
 
-//     showCalls.innerHTML = callButtons;
-// }
-// ctaButtons();
+// $("#Reserve-btn").click(function() {
+//     console.log("load the DOM with a reservation - function makeReso");
+    
+// });
 
 
 // FUNCTION PLANNING
@@ -51,11 +55,11 @@ $("#makeReservation").click(function() {
 
 // // // // MVP GOALS \\ \\ \\ \\
 
-FUNCTIONS FOR GOOGLE AUTHENTICATION
+X FUNCTIONS FOR GOOGLE AUTHENTICATION
 
-FUNCTION TO RENDER THE BODY-CONTAINER DIV
+X FUNCTION TO RENDER THE BODY-CONTAINER DIV
 
-AJAX FUNCTION TO 'GET' ESTAURANT INFORMATION // json imported to firebase
+X AJAX FUNCTION TO 'GET' ESTAURANT INFORMATION // json imported to firebase
 
 A FUNCTION TO 'POST' & 'PATCH' TO FIREBASE
 
