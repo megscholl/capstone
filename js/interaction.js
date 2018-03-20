@@ -66,5 +66,46 @@ function addUser(userObject) {
     });
 
 
+    function deleteReso(resoID) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/reservations.json`,
+      type: 'DELETE',
+      data: JSON.stringify(resoID),
+      dataType: 'json'
+    }).done((data) => {
+      return data;
+    });
+  }
 
-  module.exports = {buildUserObject, addUser, addReso};
+  $(document).on("click", "delete-reso", function() {
+    let resoObj = buildResoObj();
+    deleteReso(resoObj)
+    .then((resoID) =>{
+      console.log("reso has been deleted", resoObj);
+      // 
+    });
+  });
+
+
+  
+function getReso(reso) {
+  return $.ajax({
+          url: `${firebase.getFBsettings().databaseURL}/reservations.json`
+        }).done((resoData) => {
+          return resoData;
+        }).fail((error) => {
+          return error;
+        });
+}
+
+  function editReso(resoFormObj, resoId) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/reservations.json`,
+      type: 'PUT',
+      data: JSON.stringify(resoFormObj)
+    }).done((data) => {
+      return data;
+    });
+  }
+
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, getReso, editReso};
