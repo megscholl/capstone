@@ -3,9 +3,10 @@ let $ = require('../lib/node_modules/jquery'),
     login = require('./user'),
     configure = require('./configure'), 
     firebaseKey = require('./firebaseKey'),
-    makeReservation = require('./makeReservation'),
+    makeReso = require('./makeReservation'),
     upcomingResos = require('./userResos'),
-    postUID = require('./postUsertoFB');
+    postUID = require('./postUsertoFB'),
+    restaurants = require('./restaurants');
 
     login.logOut();
 
@@ -14,7 +15,7 @@ $("#login-btn").click(function() {
     login.logInGoogle()
     .then((result) => {
       console.log("result from login -", result.user.uid);
-      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid));
+      postUID.addUser(postUID.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
     //   $("#auth-btn").addClass("is-hidden");
     //   $("#logout").removeClass("is-hidden");
     //   loadSongsToDOM();
@@ -22,20 +23,25 @@ $("#login-btn").click(function() {
 });
 
 
+$("#makeReservation").click(function() {
+    console.log("load the DOM with a reservation - function (renderReservationForm)");
+    makeReso.reservationForm();
+});
 
-let showRestaurants = document.getElementById("restaurants");
+// CALL TO ACTION BUTTONS ON INDEX
+// // COME BACK TO THIS BECAUSE IT IS NOT RENDERING THE DIV WITH THE FORM
 
-let showAll;
-function showAllRestaurants() {
-    console.log("showing all restaurants");
+// let showCalls = document.getElementById("cta-buttons");
+// let callButtons;
+// function ctaButtons() {
+//     callButtons = `<img src="../images/mimosas.jpg"  id="makeReservation" width="231" height="180" class="centered opaque rounded mx-auto d-block">
+//     <div class="left-script" style="text-align: center">Make a reservation!</div>
+//     <img src="images/food1.jpg" id="checkIn" width="231" height="180" class="centered opaque rounded mx-auto d-block">
+//     <div class="right-script" style="text-align: center">Check-in <br>to your reservation!</div>`;
 
-    showAll = `
-    RESTAURANTS WILL SHOW HERE
-    `;
-    showRestaurants.innerHTML = showAll;
-}
-showAllRestaurants();
-
+//     showCalls.innerHTML = callButtons;
+// }
+// ctaButtons();
 
 
 // FUNCTION PLANNING
