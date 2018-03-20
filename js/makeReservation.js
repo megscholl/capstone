@@ -6,10 +6,18 @@ let $ = require('../lib/node_modules/jquery'),
 console.log("makeReservation file is coming through");
 
 
+
+// var formData = {
+//     "title": $('#title').val(),
+//     "description": $('#description).val()
+//   };
+
+
+
 var seeReservation;
 function reservationForm(rest, reso) {
     return new Promise(function (resolve, reject) {
-    console.log("form will show up in the body-container when this is clicked");
+    // console.log("form will show up in the body-container when this is clicked");
 
     let resoForm = {
         restaurant: rest ? rest.restaurant : "",
@@ -18,21 +26,22 @@ function reservationForm(rest, reso) {
         number: rest ? rest.number : "",
         request : rest ? rest.request : "",
         occasion: rest ? rest.occasion : "",
-        formTitle: rest ? `Make reservation at "${rest.restaurant}"` : "Make a new reservation",
-        btnText: rest ? "Reserve my table" : "Reserve my new table",
+        formTitle: rest ? `Make reservation` : "Make a new reservation",
+        btnText: rest ? "Reserve my table" : "Reserve my table",
         btnId: rest ? "reserve-btn" : "make-new-reso"
     },
 
-    seeReservation = `<form>
+    seeReservation = `<form class="contain">
          
     <h4>${resoForm.formTitle}</h4>
     <div class="rounded mx-auto flex-container align-content">
 
             <div class="form-control">
 
-                    <div class="input-group mb-4">
-                            <select class="centered custom-select" id="inputGroupSelect01">
-                              <option selected>Select a Nashville Restaurant</option>
+                    <div class="input-group">
+                    Select a Restaurant: <br><br>
+                            <select class="form-control col-md-15" id="inputGroupSelect01">
+                              <option selected></option>
                               <option id="rest1" value="barcelona">Barcelona Wine Bar Edgehill</option>
                               <option id="rest2" value="bricktops">BrickTop's West End</option>
                               <option id="rest3" value="caviarbananas">Caviar &amp; Bananas</option>
@@ -51,7 +60,7 @@ function reservationForm(rest, reso) {
                                 Date: <input type="date" class="form-control">
                             </div>
                             <div class="col-md-5">
-                                Time: <input type="time" class="form-control" id="myTime"> <!--document.getElementById("myTime").defaultValue = "18:00";-->
+                                Time: <input type="time" class="form-control" id="myTime">
                             </div>
                         </div>
                         <br>
@@ -87,7 +96,7 @@ function reservationForm(rest, reso) {
                         </div>
                     <!-- </div> -->
                     <br>
-                      <button type="button" class="btn btn-primary" id="${resoForm.btnId}">Reserve my table</button>
+                      <button type="button" class="btn btn-primary" id="${resoForm.btnId}">${resoForm.btnText}</button>
             </div>
             <!-- </div> -->
           
@@ -105,3 +114,5 @@ $("#makeReservation").click(function() {
     console.log("load the DOM with a reservation - function (renderReservationForm)");
     reservationForm();
 });
+
+// module.exports = {callRestaurants};

@@ -23,7 +23,7 @@ function getRestaurants(user) {
   function loopRestaurants() {
     getRestaurants().then((rd) => {
         for(var i = 0; i < rd.length; i++) {
-            console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant, rd[i].url);
+            // console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant, rd[i].url);
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
             showAll += `<li class="restList"><img src="${image}" width="200" height="140" style="float: left"><h3>${restaurants}</h3>hours hours hours<br><a href="#">Make a reservation now</a></li><br><br><br><br>`;
