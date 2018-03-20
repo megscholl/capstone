@@ -1,16 +1,19 @@
 "use strict";
 let $ = require('../lib/node_modules/jquery'),
+    user = require('./userProfile'),
     login = require('./user'),
     configure = require('./configure'), 
     firebaseKey = require('./firebaseKey'),
     interactions = require('./interaction'),
     restaurants = require('./restaurants'),
-    makeReso = require('./makeReservation'),
-    upcomingResos = require('./userResos'),
-    checkin = require('./checkin');
+    upcomingResos = require('./userResos');
 
-    login.logOut();
+    // login.logOut();
     restaurants.loopRestaurants();
+
+
+var userID = "";
+
 
 $("#login-btn").click(function() {
     // console.log("Login button has been clicked");
@@ -18,13 +21,11 @@ $("#login-btn").click(function() {
     .then((result) => {
     //   console.log("result from login -", result.user.uid);
       interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
-    //   $("#auth-btn").addClass("is-hidden");
-    //   $("#logout").removeClass("is-hidden");
-    //   loadSongsToDOM();
+      login.setUser(result.user.uid);
+      userID = result.user.uid;
+      console.log("login setUser: ", userID);
     });
 });
-
-
 
 
 let selectOne;
@@ -42,10 +43,14 @@ function restaurantOptions() {
 }
 restaurantOptions();
 
-// $("#Reserve-btn").click(function() {
-//     console.log("load the DOM with a reservation - function makeReso");
-    
-// });
+
+
+
+
+
+
+
+
 
 
 // FUNCTION PLANNING

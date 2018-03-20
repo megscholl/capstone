@@ -1,4 +1,13 @@
 "use strict";
+
+
+          ///////////////////////////////////////////////////
+          //////////// THIS JS FILE IS COMPLETE /////////////
+          ///////////////// REFERENCE ONLY //////////////////
+		  ///////////////////////////////////////////////////
+		  
+
+		  
 let firebase = require("./configure"),
 	provider = new firebase.auth.GoogleAuthProvider(),
 	currentUser = null;
@@ -16,7 +25,8 @@ let firebase = require("./configure"),
 	});
 
 function logInGoogle() {
-    return firebase.auth().signInWithPopup(provider);
+	// console.log("log in, ", firebase.auth());
+	return firebase.auth().signInWithPopup(provider);
 }
 
 function logOut(){
@@ -28,6 +38,7 @@ function setUser(val){
 }
 
 function getUser(){
+	console.log("current user: ", currentUser);
     return currentUser;
 }
 
