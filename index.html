@@ -33,8 +33,91 @@
         <div id="upcomingReservations"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
 
 
-        <div class="flex-container" id="cta-buttons"><img src="../images/mimosas.jpg"  id="makeReservation" width="231" height="180" class="centered opaque rounded mx-auto d-block">
-    <div class="left-script" style="text-align: center">Make a reservation!</div>
+        <div class="flex-container" id="cta-buttons">
+          <form class="form-inline" id="makeReso">
+            <div class="row form-text">
+                <div class="input-group">
+                    Select a Restaurant: <select class="form-control-sm col-md-15" id="select-restaurant"></select>
+                </div>
+                <div class="col-2">
+                  Date: <input type="date" class="form-control-sm" placeholder=".col-2" id="select-date">
+                </div>
+                <div class="col-3">
+                  Time: <select class="form-control-sm" placeholder=".col-3" id="select-time">
+                      <option id="time1" value="11:45 AM">11:45 AM</option>
+                      <option id="time2" value="12:30 PM">12:30 PM</option>
+                      <option id="time3" value="2:00 PM">2:00 PM</option>
+                      <option id="time4" value="5:30 PM">5:30 PM</option>
+                      <option id="time5" value="6:00 PM">6:00 PM</option>
+                      <option id="time6" value="6:30 PM">6:30 PM</option>
+                      <option id="time7" value="6:30 PM">6:30 PM</option>
+                      <option id="time8" value="7:00 PM">7:00 PM</option>
+                      <option id="time9" value="7:00 PM">7:00 PM</option>
+                      <option id="time10" value="7:15 PM">7:15 PM</option>
+                      <option id="time11" value="8:15 PM">8:15 PM</option>
+                      <option id="time12" value="8:15 PM">8:15 PM</option>
+                      <option id="time13" value="9:00 PM">9:00 PM</option>
+                      </select>
+                </div>
+                <div class="col-4">
+                  Occasion: <select class="form-control-sm" placeholder=".col-4" id="select-occasion">
+                      <option selected></option>
+                      <option id="occ1" value="birthday">Birthday</option>
+                      <option id="occ2" value="anniversary">Anniversary</option>
+                      <option id="occ3" value="business">Business meeting</option>
+                      <option id="occ4" value="other">Other special occassion</option>
+                    </select>
+                </div>
+              </div>
+              <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+              </form>
+<!--          
+            <h4>Make a reservation</h4>
+            <div class="rounded mx-auto flex-container align-content">
+        
+                    <div class="form-control">
+        
+                            
+                                <div class="row">
+                                    <div class="col-md-7">
+                                        Date: <input type="date" class="form-control" value="select-date">
+                                    </div>
+                                    <div class="col-md-6">
+                                        Time: 
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        How many people in your party?: <input type="number" class="form-control col-md-3" id="select-people">
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        Any requests?: <select class="custom-select" id="select-request">
+                                                <option selected></option>
+                                                <option id="req1" value="booth">Booth</option>
+                                                <option id="req2" value="table">Table</option>
+                                                <option id="req3" value="patio">Patio</option>
+                                                <option id="req4" value="barbooth">Bar booth</option>
+                                                <option id="req5" value="handicap">Wheel Chair Accessible</option>
+                                              </select>
+                                    </div>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-10">
+                                        Occasion: 
+                                    </div>
+                                </div>
+                            <br>
+                              <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+                    </div>
+                 </div>
+            </div>
+        
+        </form> -->
     <img src="images/food1.jpg" id="checkIn" width="231" height="180" class="centered opaque rounded mx-auto d-block">
     <div class="right-script" style="text-align: center">Check-in <br>to your reservation!</div></div>
 

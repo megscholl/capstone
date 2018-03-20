@@ -1,7 +1,8 @@
 "use strict";
 
 let $ = require('jquery'),
-    firebase = require("./configure");
+    firebase = require("./configure"),
+    reservations = require('./makeReservation');
 
 let restaurantData = [];
 
@@ -10,7 +11,7 @@ function getRestaurants(user) {
       url: `${firebase.getFBsettings().databaseURL}/restaurants.json`,
       method: 'GET'
     }).done((restaurantData) => {
-        console.log("getting restaurant data: ", restaurantData);
+        // console.log("getting restaurant data: ", restaurantData);
       return restaurantData;
     });
   }
@@ -18,16 +19,19 @@ function getRestaurants(user) {
 
   let rd;
   let showAll;
+  // let selectOne;
   let showRestaurants = document.getElementById("restaurants");
+
 
   function loopRestaurants() {
     getRestaurants().then((rd) => {
         for(var i = 0; i < rd.length; i++) {
-            // console.log("hey restaurants are showing here: ", rd[i].id, rd[i].restaurant, rd[i].url);
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
+            var id = rd[i].id;
             showAll += `<li class="restList"><img src="${image}" width="200" height="140" style="float: left"><h3>${restaurants}</h3>hours hours hours<br><a href="#">Make a reservation now</a></li><br><br><br><br>`;
-        }
+
+          }
               showRestaurants.innerHTML = showAll;
 
     });
