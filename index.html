@@ -32,7 +32,8 @@
 
         <div id="upcomingReservations" class="container"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
 
-
+      <div class="row" style="margin-left: 15em;">
+        <div class="column">
         <form class="container form-inline" id="cta-buttons">
             <div class="row form-text">
                 <div class="input-group">
@@ -71,19 +72,19 @@
                     <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
                 </div>
                 </div>
-              </form>
+              </form></div>
 
 
-              <div id="inner-container" class="transparent border-container pre-scrollable" height="calc(100vh-198px)">
-                  <div id="restaurants" class="list-restaurants"></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
-                </div>
-
-
-                <div class="right-script" style="text-align: center">
-                  <button id="checkIn" width="231" height="180" class="">
+        <div class="column">
+              <div class="right-script" style="text-align: center">
+                  <button id="checkIn" width="231" height="180" class="btn-primary">
                     Check-in <br>to your reservation!</button></div>
+              </div>
+        </div>
 
-
+        <div id="inner-container" class="transparent border-container pre-scrollable" height="calc(100vh-198px)">
+              <div id="restaurants" class="list-restaurants"></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
+        </div>
     </div>
 
 
