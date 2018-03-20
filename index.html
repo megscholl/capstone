@@ -30,11 +30,10 @@
 
     <div id="body-container">
 
-        <div id="upcomingReservations"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
+        <div id="upcomingReservations" class="container"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
 
 
-        <div class="flex-container" id="cta-buttons">
-          <form class="form-inline" id="makeReso">
+        <form class="container form-inline" id="cta-buttons">
             <div class="row form-text">
                 <div class="input-group">
                     Select a Restaurant: <select class="form-control-sm col-md-15" id="select-restaurant"></select>
@@ -68,61 +67,22 @@
                       <option id="occ4" value="other">Other special occassion</option>
                     </select>
                 </div>
-              </div>
-              <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+                <div class="col-5">
+                    <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+                </div>
+                </div>
               </form>
-<!--          
-            <h4>Make a reservation</h4>
-            <div class="rounded mx-auto flex-container align-content">
-        
-                    <div class="form-control">
-        
-                            
-                                <div class="row">
-                                    <div class="col-md-7">
-                                        Date: <input type="date" class="form-control" value="select-date">
-                                    </div>
-                                    <div class="col-md-6">
-                                        Time: 
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        How many people in your party?: <input type="number" class="form-control col-md-3" id="select-people">
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        Any requests?: <select class="custom-select" id="select-request">
-                                                <option selected></option>
-                                                <option id="req1" value="booth">Booth</option>
-                                                <option id="req2" value="table">Table</option>
-                                                <option id="req3" value="patio">Patio</option>
-                                                <option id="req4" value="barbooth">Bar booth</option>
-                                                <option id="req5" value="handicap">Wheel Chair Accessible</option>
-                                              </select>
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="row">
-                                    <div class="col-md-10">
-                                        Occasion: 
-                                    </div>
-                                </div>
-                            <br>
-                              <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
-                    </div>
-                 </div>
-            </div>
-        
-        </form> -->
-    <img src="images/food1.jpg" id="checkIn" width="231" height="180" class="centered opaque rounded mx-auto d-block">
-    <div class="right-script" style="text-align: center">Check-in <br>to your reservation!</div></div>
 
 
-        <div id="restaurants" class="list-restaurants"></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
+              <div id="inner-container" class="transparent border-container pre-scrollable" height="calc(100vh-198px)">
+                  <div id="restaurants" class="list-restaurants"></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
+                </div>
+
+
+                <div class="right-script" style="text-align: center">
+                  <button id="checkIn" width="231" height="180" class="">
+                    Check-in <br>to your reservation!</button></div>
+
 
     </div>
 
