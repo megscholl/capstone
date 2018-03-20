@@ -1,5 +1,13 @@
 "use strict";
 
+
+          ///////////////////////////////////////////////////
+          //////////// THIS JS FILE IS COMPLETE /////////////
+          ///////////////// REFERENCE ONLY //////////////////
+          ///////////////////////////////////////////////////
+
+          
+
 let firebase = require("firebase/app"),
     fb = require("./firebaseKey"),
     fbData = fb(), //running the fb file, containing what's inside fb-key

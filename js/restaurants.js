@@ -1,8 +1,14 @@
 "use strict";
 
+          ///////////////////////////////////////////////////
+          //////////// THIS JS FILE IS COMPLETE /////////////
+          ///////////////// REFERENCE ONLY //////////////////
+          ///////////////////////////////////////////////////
+
+
+
 let $ = require('jquery'),
-    firebase = require("./configure"),
-    reservations = require('./makeReservation');
+    firebase = require("./configure");
 
 let restaurantData = [];
 
@@ -23,7 +29,7 @@ function getRestaurants(user) {
   let showRestaurants = document.getElementById("restaurants");
 
 
-  function loopRestaurants() {
+function loopRestaurants() {
     getRestaurants().then((rd) => {
         for(var i = 0; i < rd.length; i++) {
             var restaurants = rd[i].restaurant;
@@ -33,7 +39,6 @@ function getRestaurants(user) {
 
           }
               showRestaurants.innerHTML = showAll;
-
     });
 }  
 loopRestaurants();
