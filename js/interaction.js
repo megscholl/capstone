@@ -86,4 +86,17 @@ function addUser(userObject) {
     });
   });
 
-  module.exports = {buildUserObject, addUser, addReso, deleteReso};
+
+  
+function getReso(reso) {
+  return $.ajax({
+          url: `${firebase.getFBsettings().databaseURL}/reservations.json`
+        }).done((resoData) => {
+          return resoData;
+        }).fail((error) => {
+          return error;
+        });
+}
+
+
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, getReso};
