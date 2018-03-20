@@ -98,5 +98,14 @@ function getReso(reso) {
         });
 }
 
+  function editReso(resoFormObj, resoId) {
+    return $.ajax({
+      url: `${firebase.getFBsettings().databaseURL}/reservations.json`,
+      type: 'PUT',
+      data: JSON.stringify(resoFormObj)
+    }).done((data) => {
+      return data;
+    });
+  }
 
-  module.exports = {buildUserObject, addUser, addReso, deleteReso, getReso};
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, getReso, editReso};
