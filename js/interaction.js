@@ -122,6 +122,12 @@ $("#checkIn").click(function() {
 ////////////////////////////////
 
 var resoData = [];
+var seeResos = "";
+let seeMore = document.getElementById("showcase");
+
+// var rStatus;
+
+
 function getReso(reso) {
   // console.log("AJAX", user.getUser());
   return $.ajax({
@@ -134,38 +140,71 @@ function getReso(reso) {
         });
       }
       
-    let keys;
-    let listReservations;
+
+
+let keys;
+var a;
+let listReservations;
+
 function showReso() {
   getReso(event).then(function(rData) {
-    console.log("rData", rData);
+    // console.log("rData", rData);
+    listResos(rData);
 
-
-    keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
-    console.log("keys: ", keys);
-
-    for(var a = 0; a < keys.length; a++){
-      console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
-    }
+   
   });
 }
 
+function listResos(rData) {
+  keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
+  // console.log("keys: ", keys);
 
-var seeResos;
-let seeMore = document.getElementById("upcomingReservations");
+  for(a = 0; a < 3; a++){
+    // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
+
+      let rPlace = keys[a].restaurant;
+      let rDate = keys[a].date;
+      let rTime = keys[a].time;
+      let rNum = keys[a].people;
+      let rOcc = keys[a].occasion;
+  // var rStatus = keys[a].status;
+// console.log("User's reservation: ", "place: ", rPlace, "date: ", rDate, "time: ", rTime, "party of ", rNum, "occasion: ", rOcc);
+
+
+seeResos += `
+
+
+  <div class="card horizontal small">
+    <div class="card-image">
+      <img src="images/food1.jpg">
+    </div>
+    <div class="card-stacked">
+      <div class="card-content">
+        <h5>${rPlace}</h5>
+        <ul>
+          <li>Reservation</li>
+          <li>Date: ${rDate}</li>
+          <li>Time: ${rTime}</li>
+          <li>Party of ${rNum}</li>
+          <li>Occasion: ${rOcc}</li>
+        </ul>
+      </div>
+      <div class="card-action">
+        <a id="checkIn">Check in</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="editReso">Edit</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="cancel">Cancel</a>
+      </div>
+    </div>
+  </div>
+
+  `;
+  }
+  seeMore.innerHTML = seeResos;
+}
 
 $("#userResos").click(function() {
   console.log("merp");
-
-    seeResos = `
-      <h4>Upcoming reservations</h4>
-
-      show Reso: ${showReso()};
-      <br>
-    
-    `;
-    seeMore.innerHTML = seeResos;
+  showReso();
 });
+
 
 //////////////////////////////////////////////////////////////
 
