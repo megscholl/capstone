@@ -133,14 +133,15 @@ function getReso(reso) {
         });
       }
       
+
+    let listReservations = [];
 function showReso() {
   getReso(event).then(function(rData) {
     let keys = Object.keys(rData);
-    let listReservations = [];
     keys.forEach(function(resos){
-      // console.log("event: ", event.currentTarget.response);
+      console.log("event: ", event.currentTarget.response);
 
-      var listReservations = event.currentTarget.responseText;
+       listReservations = event.currentTarget.responseText;
       var userResos = listReservations.restaurant;
       console.log("list Reservation: ", userResos);
     });
