@@ -31,7 +31,7 @@ function getRestaurants(user) {
 
 function loopRestaurants() {
     getRestaurants().then((rd) => {
-      console.log("loop reso rd", rd, rd.length);
+      // console.log("loop reso rd", rd, rd.length);
         for(var i = 0; i < rd.length; i++) {
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;

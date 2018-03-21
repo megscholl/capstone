@@ -159,7 +159,7 @@ function listResos(rData) {
   keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
   // console.log("keys: ", keys);
 
-  for(a = 0; a < 3; a++){
+  for(a = 0; a < 6; a++){
     // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
       let rPlace = keys[a].restaurant;
@@ -174,10 +174,8 @@ function listResos(rData) {
 seeResos += `
 
 
-  <div class="card horizontal small">
-    <div class="card-image">
-      <img src="images/food1.jpg">
-    </div>
+<div class="col s3">
+  <div class="card small">
     <div class="card-stacked">
       <div class="card-content">
         <h5>${rPlace}</h5>
@@ -192,6 +190,7 @@ seeResos += `
       <div class="card-action">
         <a id="checkIn">Check in</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="editReso">Edit</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="cancel">Cancel</a>
       </div>
+    </div>
     </div>
   </div>
 
