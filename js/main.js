@@ -1,4 +1,7 @@
 "use strict";
+
+
+
 let $ = require('../lib/node_modules/jquery'),
     user = require('./userProfile'),
     login = require('./user'),
@@ -8,9 +11,10 @@ let $ = require('../lib/node_modules/jquery'),
     restaurants = require('./restaurants'),
     upcomingResos = require('./userResos');
 
+    
     // login.logOut();
     restaurants.loopRestaurants();
-
+    
 
 var userID = "";
 
@@ -42,10 +46,6 @@ function restaurantOptions() {
   });
 }
 restaurantOptions();
-
-
-
-
 
 
 

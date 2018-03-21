@@ -126,7 +126,7 @@ function getReso(reso) {
   return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
         }).done((resoData) => {
-          console.log("resoData", resoData);
+          console.log("resoData", Object.keys(resoData));
           return resoData;
         }).fail((error) => {
           return error;
@@ -134,10 +134,11 @@ function getReso(reso) {
       }
       
 function showReso() {
-  getReso().then((rData) => {
-    for(var r = 0; r < rData.length; r++) {
-      console.log(rData[r]);
-  }});
+  getReso().then((rData) =>{
+    for(var a = 0; a < rData.length; a++){
+      console.log("RDATA SHOWING::: ", rData[a]);
+    }
+  });
 }
 
 
@@ -158,24 +159,6 @@ $("#userResos").click(function() {
 });
 
 //////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -229,4 +212,4 @@ $(document).on("click", "delete-reso", function() {
 
 
 
-  module.exports = {buildUserObject, addUser, addReso, deleteReso, getReso, showReso, editReso};
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, showReso, editReso};

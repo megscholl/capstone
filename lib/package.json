@@ -24,6 +24,7 @@
   },
   "dependencies": {
     "firebase": "^3.6.9",
-    "jquery": "^1.7.4"
+    "jquery": "^1.7.4",
+    "materialize-css": "^0.100.2"
   }
 }
