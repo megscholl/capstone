@@ -24,13 +24,14 @@ function getRestaurants(user) {
 
 
   let rd;
-  let showAll;
+  let showAll = "";
   // let selectOne;
   let showRestaurants = document.getElementById("restaurants");
 
 
 function loopRestaurants() {
     getRestaurants().then((rd) => {
+      console.log("loop reso rd", rd, rd.length);
         for(var i = 0; i < rd.length; i++) {
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
@@ -44,6 +45,6 @@ function loopRestaurants() {
               showRestaurants.innerHTML = showAll;
     });
 }  
-loopRestaurants();
+
 
   module.exports = {getRestaurants, loopRestaurants};
