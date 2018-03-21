@@ -134,19 +134,19 @@ function getReso(reso) {
         });
       }
       
-
-    let listReservations = [];
+    let keys;
+    let listReservations;
 function showReso() {
   getReso(event).then(function(rData) {
     console.log("rData", rData);
-    let keys = Object.keys(rData);
-    console.log("keys: ", keys);
-    keys.forEach(function(resos){
-       listReservations = event.currentTarget.response;
-      
-      console.log("list Reservation: ", listReservations);
-    });
 
+
+    keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
+    console.log("keys: ", keys);
+
+    for(var a = 0; a < keys.length; a++){
+      console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
+    }
   });
 }
 
