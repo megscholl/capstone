@@ -1,101 +1,110 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>CAPSTONE HTML &amp; CSS DESIGN</title>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/css/materialize.min.css">
 
-  </head>
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <link rel="stylesheet" type="text/css" media="screen" href="css/main.css" />
+    </head>
 
+    <body>
 
-
-
-
-<body>
-
-
-    <header>
-        <nav class="navbar navbar-light bg-light">
-          <div class="col-md-4 mx-auto">
-            <h1>Reso</h1> 
-            <button id="login-btn" type="button" class="btn" style="margin-left: 80%">Login</button>
-            <!-- <button  id="logout" type="button" class="is-hidden btn" style="margin-left: 80%">Logout</button> -->
-            <button id="userResos" type="button" class="btn" style="margin-left: 80%">See upcoming</button>
-          </div>
-        </nav>
-    </header>
-
-
-
-    <div id="body-container">
-
-        <div id="upcomingReservations" class="container"></div> <!-- THIS DIV WILL CONTAIN ALL UPCOMING RESERVATIONS FROM AN IF STATEMENT- IF USER HAS UPCOMING RESERVATIONS, A FUNCTION WILL RUN TO DISPLAY RESERVATIONS HERE -->
-
-      <div class="row" style="margin-left: 15em;">
-        <div class="column">
-        <form class="container form-inline" id="cta-buttons">
-            <div class="row form-text">
-                <div class="input-group">
-                    Select a Restaurant: <select class="form-control-sm" id="select-restaurant"></select>
+            <nav>
+                <div class="nav-wrapper">
+                    <a href="#" class="brand-logo"><h1>Reso</h1></a>
+                    <ul id="nav-mobile" class="right hide-on-med-and-down">
+                      <li><a id="checkIn">Check-in to your Reso</a></li>
+                      <li><a href="#reservations">Reservations</a></li>
+                      <li><a href="#restaurants">Nashville Restaurants</a></li>
+                      <li><a id="login-btn">Login</a></li>
+                    </ul>
                 </div>
-                <div class="row">
-                  Date: &nbsp;&nbsp; <input type="date" class="form-control-sm" id="select-date"> &nbsp;&nbsp; 
+            </nav>
+                        
+                  <div class="parallax-container">
+                        <div class="parallax"><img src="images/urbancowboy.jpg"></div>
+                      </div>
+                      <div class="section white">
+                        <div class="row container">
+                                <h3 class="header" id="reservations">Make a reservation</h3>
+          
+                                <form class="container form-inline" id="cta-buttons">
+                                    <div class="row form-text">
+                                        <div class="row">
+                                            Select a Restaurant: <select class="browser-default" id="select-restaurant"></select>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s6">
+                                                Date:  
+                                              <div class="input-field inline">
+                                                <input id="select-date" type="date" class="validate">
+                                              </div>
+                                            </div>
+                                            <div class="col s4">  
+                                                Time: <div class="inline">
+                                                  <select class="browser-default" id="select-time">
+                                                      <option id="time1" value="11:45 AM">11:45 AM</option>
+                                                      <option id="time2" value="12:30 PM">12:30 PM</option>
+                                                      <option id="time3" value="2:00 PM">2:00 PM</option>
+                                                      <option id="time4" value="5:30 PM">5:30 PM</option>
+                                                      <option id="time5" value="6:00 PM">6:00 PM</option>
+                                                      <option id="time6" value="6:30 PM">6:30 PM</option>
+                                                      <option id="time7" value="6:30 PM">6:30 PM</option>
+                                                      <option id="time8" value="7:00 PM">7:00 PM</option>
+                                                      <option id="time9" value="7:00 PM">7:00 PM</option>
+                                                      <option id="time10" value="7:15 PM">7:15 PM</option>
+                                                      <option id="time11" value="8:15 PM">8:15 PM</option>
+                                                      <option id="time12" value="8:15 PM">8:15 PM</option>
+                                                      <option id="time13" value="9:00 PM">9:00 PM</option>
+                                                  </select>
+                                              </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col s12">
+                                                How many people in your party? 
+                                              <div class="input-field inline">
+                                                <input id="select-people" type="number" class="validate">
+                                              </div>
+                                            </div>
+                                          </div>
+                                        <div class="col-4">
+                                          Occasion: <select class="browser-default" id="select-occasion">
+                                              <option selected></option>
+                                              <option id="occ1" value="birthday">Birthday</option>
+                                              <option id="occ2" value="anniversary">Anniversary</option>
+                                              <option id="occ3" value="business">Business meeting</option>
+                                              <option id="occ4" value="other">Other special occassion</option>
+                                            </select>
+                                        </div>
+                                        <div class="col-5">
+                                            <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+                                        </div>
+                                        </div>
+                                      </form>
+                        </div>
+                      </div>
+                      <div class="parallax-container">
+                        <div class="parallax"><img src="images/thompson.jpg"></div>
+                      </div>
 
-                  Time: &nbsp;&nbsp; <select class="form-control-sm" id="select-time">
-                      <option id="time1" value="11:45 AM">11:45 AM</option>
-                      <option id="time2" value="12:30 PM">12:30 PM</option>
-                      <option id="time3" value="2:00 PM">2:00 PM</option>
-                      <option id="time4" value="5:30 PM">5:30 PM</option>
-                      <option id="time5" value="6:00 PM">6:00 PM</option>
-                      <option id="time6" value="6:30 PM">6:30 PM</option>
-                      <option id="time7" value="6:30 PM">6:30 PM</option>
-                      <option id="time8" value="7:00 PM">7:00 PM</option>
-                      <option id="time9" value="7:00 PM">7:00 PM</option>
-                      <option id="time10" value="7:15 PM">7:15 PM</option>
-                      <option id="time11" value="8:15 PM">8:15 PM</option>
-                      <option id="time12" value="8:15 PM">8:15 PM</option>
-                      <option id="time13" value="9:00 PM">9:00 PM</option>
-                      </select>
-                </div>
-                <div class="col-5">
-                  How many people in your party? <input type="number" id="select-people" class="form-control-sm">
-                </div>
-                <div class="col-4">
-                  Occasion: <select class="form-control-sm" id="select-occasion">
-                      <option selected></option>
-                      <option id="occ1" value="birthday">Birthday</option>
-                      <option id="occ2" value="anniversary">Anniversary</option>
-                      <option id="occ3" value="business">Business meeting</option>
-                      <option id="occ4" value="other">Other special occassion</option>
-                    </select>
-                </div>
-                <div class="col-5">
-                    <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
-                </div>
-                </div>
-              </form></div>
 
-<!-- 
-        <div class="column">
-              <div class="right-script" style="text-align: center">
-                  <button id="checkIn" width="231" height="180" class="btn-primary">
-                    Check-in <br>to your reservation!</button></div>
-              </div>
-        </div> -->
+                    <ul id="restaurants" class="collapsible popout" data-collapsible="accordion">
 
-        <div id="inner-container" class="transparent border-container pre-scrollable" height="calc(100vh-198px)">
-              <div><ul id="restaurants" class="list-restaurants"></ul></div> <!-- THIS DIV WILL LIST ALL RESTAURANTS IN THE SELECT ELEMENT -->
-        </div>
-    </div>
+                            
+                    </ul>
 
 
+      <!--Import jQuery before materialize.js-->
+      <script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min.js"></script>
+      
+      <script type="text/javascript" src="materialize.js"></script>
+      <script type="text/javascript" src="dist/app.js"></script>
+    </body>
+  </html>
 
-  <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
-  <script src="dist/app.js"></script>
-</body>
-</html>
