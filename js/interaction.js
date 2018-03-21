@@ -126,7 +126,7 @@ function getReso(reso) {
   return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
         }).done((resoData) => {
-          console.log("resoData", Object.keys(resoData));
+          console.log("resoData", resoData);
           return resoData;
         }).fail((error) => {
           return error;
@@ -134,10 +134,19 @@ function getReso(reso) {
       }
       
 function showReso() {
-  getReso().then((rData) =>{
-    for(var a = 0; a < rData.length; a++){
-      console.log("RDATA SHOWING::: ", rData[a]);
-    }
+  getReso(event).then(function(rData) {
+    let keys = Object.keys(rData);
+    let listReservations = [];
+    keys.forEach(function(resos){
+      // console.log("event: ", event.currentTarget.response);
+
+      var listReservations = event.currentTarget.responseText;
+      var userResos = listReservations.restaurant;
+      console.log("list Reservation: ", userResos);
+    });
+    // for(var a = 0; a < rData.length; a++){
+    //   console.log("RDATA SHOWING::: ", rData[a]);
+    // }
   });
 }
 
