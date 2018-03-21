@@ -122,7 +122,6 @@ $("#showcase").on("click", "#checkIn", function() {
 ////////////////////////////////
 
 var resoData = [];
-var seeResos = "";
 let seeMore = document.getElementById("showcase");
 
 // var rStatus;
@@ -156,17 +155,22 @@ function showReso() {
 }
    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
 function listResos(rData) {
-  keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
+  console.log("rData: ", rData);
+  // keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
   // console.log("keys: ", keys);
 
-  for(a = 0; a < keys.length; a++){
+
+  let seeResos = "";
+
+  for(let reservation in rData){
     // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
-      let rPlace = keys[a].restaurant;
-      let rDate = keys[a].date;
-      let rTime = keys[a].time;
-      let rNum = keys[a].people;
-      let rOcc = keys[a].occasion;
+      let rPlace = rData[reservation].restaurant;
+      let rDate = rData[reservation].date;
+      let rTime = rData[reservation].time;
+      let rNum = rData[reservation].people;
+      let rOcc = rData[reservation].occasion;
+      let uglyID = reservation;
   // var rStatus = keys[a].status;
 // console.log("User's reservation: ", "place: ", rPlace, "date: ", rDate, "time: ", rTime, "party of ", rNum, "occasion: ", rOcc);
 
@@ -187,7 +191,7 @@ seeResos += `
         </ul>
       </div>
       <div class="card-action">
-        <a id="checkIn">Check in</a><a id="editReso">Edit</a> <a id="cancel">Cancel</a>
+        <a id="checkIn">Check in</a><a id="editReso">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
       </div>
     </div>
   </div>
@@ -239,7 +243,7 @@ $("#userResos").click(function() {
 ////////////////////////////////////
 function deleteReso(resoID) {
   return $.ajax({
-    url: `${firebase.getFBsettings().databaseURL}/reservations.json`,
+    url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
     type: 'DELETE',
     data: JSON.stringify(resoID),
     dataType: 'json'
@@ -248,9 +252,22 @@ function deleteReso(resoID) {
   });
 }
 
-$("#showcase").on("click", "#cancel", function() {
-  console.log("CANCEL IN BUTTON CLICKED");
-  deleteReso();
+// $(document).on("click", "#cancel", function () {
+//   let resoID = $(this).data("cancel");
+//   deleteReso(resoID)
+//   .then(() => {
+//     showReso();
+//   });
+// });
+
+$(document).on("click", ".delete-reso", function() {
+  let cancelReso = $(this).attr("id");
+  console.log("cancel", cancelReso);
+  deleteReso(cancelReso)
+  .then(() => {
+    showReso();
+    console.log("CANCEL IN BUTTON CLICKED");
+  });
 });
 
 ///////////////////////////////////////////////////////
