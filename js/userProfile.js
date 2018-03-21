@@ -5,6 +5,10 @@ firebase = require('./configure'),
     fb = require('./interaction'),
     user = require('./user');
 
+
+
+    
+
 // console.log("user logged in profile");
 
 // let userData = [];

@@ -4,7 +4,8 @@
 let $ = require('../lib/node_modules/jquery'),
     firebase = require('./configure'),
     interaction= require('./interaction'),
-    user = require('./user');
+    user = require('./user'),
+    dbRef = firebase.database().ref().child('reservations');
 
 
 
@@ -126,18 +127,26 @@ function getReso(reso) {
   return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
         }).done((resoData) => {
-          console.log("resoData", Object.keys(resoData));
+          // console.log("resoData", resoData);
           return resoData;
         }).fail((error) => {
           return error;
         });
       }
       
+
+    let listReservations = [];
 function showReso() {
-  getReso().then((rData) =>{
-    for(var a = 0; a < rData.length; a++){
-      console.log("RDATA SHOWING::: ", rData[a]);
-    }
+  getReso(event).then(function(rData) {
+    console.log("rData", rData);
+    let keys = Object.keys(rData);
+    console.log("keys: ", keys);
+    keys.forEach(function(resos){
+       listReservations = event.currentTarget.response;
+      
+      console.log("list Reservation: ", listReservations);
+    });
+
   });
 }
 
