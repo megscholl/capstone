@@ -24,11 +24,13 @@ h1 {
 
 nav ul a {
     font-family: 'Oxygen';
+    color: $black !important;
 }
 
 h3{
     color: $green;
     font-family: 'Oxygen';
+    text-align: center;
 
 }
 
@@ -52,10 +54,6 @@ form {
     // margin-right: 30%;
 }
 
-.btn {
-    margin-right: auto;
-    margin-left: auto;
-}
 
 .imageOne {
     background-image: url('../images/food1.jpg');
@@ -111,7 +109,7 @@ form {
 // }
 
 .nav-wrapper {
-background-color: $black !important;
+background-color: $white !important;
 height: 140% !important;
 }
 .white{
@@ -119,7 +117,9 @@ height: 140% !important;
 }
 
 .btn {
+    background-color: $green !important;
     cursor: pointer;
+    margin-left: 75%;
 }
 
 #makeReservation,
