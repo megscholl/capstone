@@ -126,7 +126,8 @@ function getReso(reso) {
   return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
         }).done((resoData) => {
-          console.log("resoData", resoData);
+          var showResoData = Object.keys(resoData);
+          console.log("resoData", Object.keys(resoData));
           return resoData;
         }).fail((error) => {
           return error;
