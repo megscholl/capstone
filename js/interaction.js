@@ -107,9 +107,9 @@ function checkStatus() {
   //change status of users' reservation to true
 }
 
-$("#checkIn").click(function() {
+$("#showcase").on("click", "#checkIn", function() {
   console.log("CHECK IN BUTTON CLICKED");
-  checkStatus();
+  // checkStatus();
 });
 
 ///////////////////////////////////////////////////////
@@ -154,12 +154,12 @@ function showReso() {
    
   });
 }
-
+   // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
 function listResos(rData) {
-  keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
+  keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
   // console.log("keys: ", keys);
 
-  for(a = 0; a < 6; a++){
+  for(a = 0; a < keys.length; a++){
     // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
       let rPlace = keys[a].restaurant;
@@ -173,8 +173,7 @@ function listResos(rData) {
 
 seeResos += `
 
-
-<div class="col s3">
+<div class="col s4">
   <div class="card small">
     <div class="card-stacked">
       <div class="card-content">
@@ -188,10 +187,10 @@ seeResos += `
         </ul>
       </div>
       <div class="card-action">
-        <a id="checkIn">Check in</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="editReso">Edit</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="cancel">Cancel</a>
+        <a id="checkIn">Check in</a><a id="editReso">Edit</a> <a id="cancel">Cancel</a>
       </div>
     </div>
-    </div>
+  </div>
   </div>
 
   `;
@@ -227,6 +226,11 @@ $("#userResos").click(function() {
       return data;
     });
   }
+
+  $("#showcase").on("click", "#editEso", function() {
+    console.log("EDIT BUTTON CLICKED");
+    // checkStatus();
+  });
 ////////////////////////////////
 
 
@@ -244,13 +248,9 @@ function deleteReso(resoID) {
   });
 }
 
-$(document).on("click", "delete-reso", function() {
-  let resoObj = buildResoObj();
-  deleteReso(resoObj)
-  .then((resoID) =>{
-    console.log("reso has been deleted", resoObj);
-    // 
-  });
+$("#showcase").on("click", "#cancel", function() {
+  console.log("CANCEL IN BUTTON CLICKED");
+  deleteReso();
 });
 
 ///////////////////////////////////////////////////////

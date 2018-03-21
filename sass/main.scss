@@ -23,9 +23,9 @@ h1 {
     margin: .1rem 0 1.68rem 3rem !important;
 }
 
-nav ul a {
+nav ul a.btn {
     font-family: 'Oxygen';
-    color: $black !important;
+    color: white !important;
 }
 
 h3{
@@ -121,14 +121,20 @@ height: 140% !important;
     background-color: $white !important;
 }
 
-.btn {
+.btn, .reserve-btn {
     background-color: $green !important;
     cursor: pointer;
-    margin-left: 75%;
+    margin-left: 85%;
+    color: white;
+    margin-top: -2px;
+    margin-left: 15px;
+    margin-right: 15px;
 }
 
 #makeReservation,
-#checkIn {
+#checkIn,
+#editReso,
+#cancel {
     cursor: pointer;
 }
 
