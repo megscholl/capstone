@@ -35,8 +35,7 @@ h3{
 
 }
 
-h4 {
-    text-align: center;
+h6 {
     color: $green;
     font-weight: bold;
 }
@@ -131,10 +130,9 @@ height: 140% !important;
     margin-right: 15px;
 }
 
-#makeReservation,
-#checkIn,
-#editReso,
-#cancel {
+.delete-reso,
+.check-in,
+.edit {
     cursor: pointer;
 }
 
