@@ -95,7 +95,7 @@ $("#Reserve-btn").click(function() {
 function setStatus(resoID) {
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
-          type: 'PUT',
+          type: 'PATCH',
           data: JSON.stringify({status: true}),
           dataType: 'json'
         }).done((userID) => {
