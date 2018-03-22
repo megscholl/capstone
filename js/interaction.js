@@ -55,7 +55,7 @@ function addUser(userObject) {
     people: $("#select-people").val(),
     request: $("#select-request").val(),
     occasion: $("#select-occasion").val(),
-    status: $("#status").val(),
+    status: false,
     uid: user.getUser()
   };
   return resoObj;
@@ -92,24 +92,33 @@ $("#Reserve-btn").click(function() {
 // SET CHECKIN STATUS IN FIREBASE
 //////////////////////////////////
 
-function setStatus(statusObject) {
+function setStatus(resoID) {
         return $.ajax({
-          url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
+          url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
           type: 'PATCH',
-          data: JSON.stringify(statusObject),
+          data: JSON.stringify({status: true}),
           dataType: 'json'
         }).done((userID) => {
           return userID;
+        }).fail((error) => {
+          console.log("error", error);
+          return error;
         });
       }
 
-function checkStatus() {
-  //change status of users' reservation to true
-}
+// function checkStatus() {
+//   console.log("checking in checkstatus function");
+// }
 
-$("#showcase").on("click", "#checkIn", function() {
-  console.log("CHECK IN BUTTON CLICKED");
-  // checkStatus();
+
+$(document).on("click", ".check-in", function() {
+  let checkintoReso = $(this).attr("id");
+  console.log("check in", checkintoReso);
+  setStatus(checkintoReso);
+  // .then(() => {
+  //   checkStatus();
+  //   console.log("CHECK IN BUTTON CLICKED");
+  
 });
 
 ///////////////////////////////////////////////////////
@@ -142,7 +151,6 @@ function getReso(reso) {
 
 
 let keys;
-var a;
 let listReservations;
 
 function showReso() {
@@ -171,7 +179,7 @@ function listResos(rData) {
       let rNum = rData[reservation].people;
       let rOcc = rData[reservation].occasion;
       let uglyID = reservation;
-  // var rStatus = keys[a].status;
+
 // console.log("User's reservation: ", "place: ", rPlace, "date: ", rDate, "time: ", rTime, "party of ", rNum, "occasion: ", rOcc);
 
 
@@ -183,7 +191,7 @@ seeResos += `
       <div class="card-content">
         <h5>${rPlace}</h5>
         <ul>
-          <li>Reservation</li>
+          <li><h6>Reservation</h6></li>
           <li>Date: ${rDate}</li>
           <li>Time: ${rTime}</li>
           <li>Party of ${rNum}</li>
@@ -191,7 +199,7 @@ seeResos += `
         </ul>
       </div>
       <div class="card-action">
-        <a id="checkIn">Check in</a><a id="editReso">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
+        <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
       </div>
     </div>
   </div>
@@ -223,7 +231,7 @@ $("#userResos").click(function() {
 
   function editReso(resoFormObj, resoId) {
     return $.ajax({
-      url: `${firebase.getFBsettings().databaseURL}/reservations.json?orderBy="uid"&equalTo="${user.getUser()}"`,
+      url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
       type: 'PUT',
       data: JSON.stringify(resoFormObj)
     }).done((data) => {
@@ -236,6 +244,7 @@ $("#userResos").click(function() {
     // checkStatus();
   });
 ////////////////////////////////
+
 
 
 ////////////////////////////////////
@@ -251,14 +260,6 @@ function deleteReso(resoID) {
     return data;
   });
 }
-
-// $(document).on("click", "#cancel", function () {
-//   let resoID = $(this).data("cancel");
-//   deleteReso(resoID)
-//   .then(() => {
-//     showReso();
-//   });
-// });
 
 $(document).on("click", ".delete-reso", function() {
   let cancelReso = $(this).attr("id");
