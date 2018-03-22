@@ -107,9 +107,9 @@ function checkStatus() {
   //change status of users' reservation to true
 }
 
-$("#checkIn").click(function() {
+$("#showcase").on("click", "#checkIn", function() {
   console.log("CHECK IN BUTTON CLICKED");
-  checkStatus();
+  // checkStatus();
 });
 
 ///////////////////////////////////////////////////////
@@ -122,7 +122,6 @@ $("#checkIn").click(function() {
 ////////////////////////////////
 
 var resoData = [];
-var seeResos = "";
 let seeMore = document.getElementById("showcase");
 
 // var rStatus;
@@ -154,30 +153,32 @@ function showReso() {
    
   });
 }
-
+   // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
 function listResos(rData) {
-  keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
+  console.log("rData: ", rData);
+  // keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
   // console.log("keys: ", keys);
 
-  for(a = 0; a < 3; a++){
+
+  let seeResos = "";
+
+  for(let reservation in rData){
     // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
-      let rPlace = keys[a].restaurant;
-      let rDate = keys[a].date;
-      let rTime = keys[a].time;
-      let rNum = keys[a].people;
-      let rOcc = keys[a].occasion;
+      let rPlace = rData[reservation].restaurant;
+      let rDate = rData[reservation].date;
+      let rTime = rData[reservation].time;
+      let rNum = rData[reservation].people;
+      let rOcc = rData[reservation].occasion;
+      let uglyID = reservation;
   // var rStatus = keys[a].status;
 // console.log("User's reservation: ", "place: ", rPlace, "date: ", rDate, "time: ", rTime, "party of ", rNum, "occasion: ", rOcc);
 
 
 seeResos += `
 
-
-  <div class="card horizontal small">
-    <div class="card-image">
-      <img src="images/food1.jpg">
-    </div>
+<div class="col s4">
+  <div class="card small">
     <div class="card-stacked">
       <div class="card-content">
         <h5>${rPlace}</h5>
@@ -190,9 +191,10 @@ seeResos += `
         </ul>
       </div>
       <div class="card-action">
-        <a id="checkIn">Check in</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="editReso">Edit</a> &#124; &nbsp;&nbsp;&nbsp;&nbsp; <a id="cancel">Cancel</a>
+        <a id="checkIn">Check in</a><a id="editReso">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
       </div>
     </div>
+  </div>
   </div>
 
   `;
@@ -228,6 +230,11 @@ $("#userResos").click(function() {
       return data;
     });
   }
+
+  $("#showcase").on("click", "#editEso", function() {
+    console.log("EDIT BUTTON CLICKED");
+    // checkStatus();
+  });
 ////////////////////////////////
 
 
@@ -236,7 +243,7 @@ $("#userResos").click(function() {
 ////////////////////////////////////
 function deleteReso(resoID) {
   return $.ajax({
-    url: `${firebase.getFBsettings().databaseURL}/reservations.json`,
+    url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
     type: 'DELETE',
     data: JSON.stringify(resoID),
     dataType: 'json'
@@ -245,12 +252,21 @@ function deleteReso(resoID) {
   });
 }
 
-$(document).on("click", "delete-reso", function() {
-  let resoObj = buildResoObj();
-  deleteReso(resoObj)
-  .then((resoID) =>{
-    console.log("reso has been deleted", resoObj);
-    // 
+// $(document).on("click", "#cancel", function () {
+//   let resoID = $(this).data("cancel");
+//   deleteReso(resoID)
+//   .then(() => {
+//     showReso();
+//   });
+// });
+
+$(document).on("click", ".delete-reso", function() {
+  let cancelReso = $(this).attr("id");
+  console.log("cancel", cancelReso);
+  deleteReso(cancelReso)
+  .then(() => {
+    showReso();
+    console.log("CANCEL IN BUTTON CLICKED");
   });
 });
 

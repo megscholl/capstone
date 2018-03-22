@@ -17,18 +17,26 @@
                 <div class="nav-wrapper">
                     <a href="#" class="brand-logo"><h1>Reso</h1></a>
                     <ul id="nav-mobile" class="right hide-on-med-and-down">
-                      <li><a id="checkIn">Check-in to your Reso</a></li>
-                      <li><a href="#reservations">Reservations</a></li>
-                      <li><a href="#restaurants">Nashville Restaurants</a></li>
-                      <li><a id="login-btn">Login</a></li>
-                      <li><a id="userResos">Upcoming</a></li>
+                      <li><a href="#reservations" class="waves-effect waves-light btn">Make a Reservation</a></li>
+                      <li><a href="#restaurants" class="waves-effect waves-light btn">Nashville Restaurants</a></li>
+                      <li><a id="userResos" class="waves-effect waves-light btn">Upcoming Reservations</a></li>
+                      <li><a id="login-btn" class="waves-effect waves-light btn">Login</a></li>
                     </ul>
                 </div>
             </nav>
                         
-                      <div class="parallax-container" id="showcase">
-                        <div class="parallax"><img src="images/bt-martini.jpg"></div>
+                      <div class="parallax-container">
+                        <div class="container scrollspy">
+                          <div class="row" id="showcase">
+
+                              <div id="main-image">
+                                <div class="parallax"><img src="images\jay-wennington-2065-unsplash.jpg" width="100%"></div>
+                              </div>
+                          </div>
+                        </div>
                       </div>
+
+
                       <div class="section white">
                         <div class="row container">
                                 <h3 class="header" id="reservations">Make a reservation</h3>
@@ -84,7 +92,7 @@
                                         </div>
                                         <br>
                                         <div class="col-5">
-                                            <button type="button" class="btn btn-primary" id="Reserve-btn">Reserve my table</button>
+                                            <a class="waves-effect waves-light btn reserve-btn"id="Reserve-btn">Reserve my table</a>
                                         </div>
                                         </div>
                                       </form>
@@ -94,11 +102,10 @@
                         <div class="parallax"><img src="images/thompson.jpg"></div>
                       </div>
 
-
-                    <ul id="restaurants" class="collapsible popout" data-collapsible="accordion">
-
-                            
+                <div width="50%">
+                    <ul id="restaurants" class="collapsible popout" data-collapsible="accordion"> 
                     </ul>
+                </div>
 
 
       <!--Import jQuery before materialize.js-->
