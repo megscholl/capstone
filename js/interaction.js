@@ -95,11 +95,14 @@ $("#Reserve-btn").click(function() {
 function setStatus(resoID) {
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
-          type: 'PATCH',
-          data: {status: true},
+          type: 'PUT',
+          data: JSON.stringify({status: true}),
           dataType: 'json'
         }).done((userID) => {
           return userID;
+        }).fail((error) => {
+          console.log("error", error);
+          return error;
         });
       }
 
@@ -188,7 +191,7 @@ seeResos += `
       <div class="card-content">
         <h5>${rPlace}</h5>
         <ul>
-          <li>Reservation</li>
+          <li><h6>Reservation</h6></li>
           <li>Date: ${rDate}</li>
           <li>Time: ${rTime}</li>
           <li>Party of ${rNum}</li>
@@ -196,7 +199,7 @@ seeResos += `
         </ul>
       </div>
       <div class="card-action">
-        <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
+        <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
       </div>
     </div>
   </div>
@@ -257,14 +260,6 @@ function deleteReso(resoID) {
     return data;
   });
 }
-
-// $(document).on("click", "#cancel", function () {
-//   let resoID = $(this).data("cancel");
-//   deleteReso(resoID)
-//   .then(() => {
-//     showReso();
-//   });
-// });
 
 $(document).on("click", ".delete-reso", function() {
   let cancelReso = $(this).attr("id");
