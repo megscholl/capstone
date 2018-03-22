@@ -96,26 +96,26 @@ function setStatus(resoID) {
         return $.ajax({
           url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
           type: 'PATCH',
-          data: JSON.stringify(resoID),
+          data: {status: true},
           dataType: 'json'
         }).done((userID) => {
           return userID;
         });
       }
 
-function checkStatus() {
-  console.log("checking in checkstatus function");
-}
+// function checkStatus() {
+//   console.log("checking in checkstatus function");
+// }
 
 
 $(document).on("click", ".check-in", function() {
   let checkintoReso = $(this).attr("id");
   console.log("check in", checkintoReso);
-  setStatus(checkintoReso)
-  .then(() => {
-    checkStatus();
-    console.log("CHECK IN BUTTON CLICKED");
-  });
+  setStatus(checkintoReso);
+  // .then(() => {
+  //   checkStatus();
+  //   console.log("CHECK IN BUTTON CLICKED");
+  
 });
 
 ///////////////////////////////////////////////////////
