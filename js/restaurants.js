@@ -47,4 +47,22 @@ function loopRestaurants() {
 }  
 
 
+
+let selectOne;
+let selectRestaurant = document.getElementById("select-restaurant");
+function restaurantOptions() {
+    getRestaurants().then((select) => {
+    for(var j = 0; j < select.length; j++) {
+      var selectRest = select[j].restaurant;
+      var rID = select[j].id;
+    //   console.log("selections for restaurants: ", selectRest, rID);
+      selectOne += `<option id="${rID}" value="${selectRest}">${selectRest}</option>`;
+    }
+    selectRestaurant.innerHTML = selectOne;
+  });
+}
+restaurantOptions();
+
+
+
   module.exports = {getRestaurants, loopRestaurants};
