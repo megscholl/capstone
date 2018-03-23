@@ -32,25 +32,6 @@ $("#login-btn").click(function() {
 });
 
 
-let selectOne;
-let selectRestaurant = document.getElementById("select-restaurant");
-function restaurantOptions() {
-    restaurants.getRestaurants().then((select) => {
-    for(var j = 0; j < select.length; j++) {
-      var selectRest = select[j].restaurant;
-      var rID = select[j].id;
-    //   console.log("selections for restaurants: ", selectRest, rID);
-      selectOne += `<option id="${rID}" value="${selectRest}">${selectRest}</option>`;
-    }
-    selectRestaurant.innerHTML = selectOne;
-  });
-}
-restaurantOptions();
-
-
-
-
-
 
 
 // FUNCTION PLANNING
@@ -66,11 +47,11 @@ X FUNCTION TO RENDER THE BODY-CONTAINER DIV
 
 X AJAX FUNCTION TO 'GET' ESTAURANT INFORMATION // json imported to firebase
 
-A FUNCTION TO 'POST' & 'PATCH' TO FIREBASE
+* A FUNCTION TO 'POST' & 'PATCH' TO FIREBASE
 
-A FUNCTION TO 'DELETE' ITEMS FROM FIREBASE
+X A FUNCTION TO 'DELETE' ITEMS FROM FIREBASE
 
-A FUNCTION TO ALLOW USER TO CHECK-IN
+X A FUNCTION TO ALLOW USER TO CHECK-IN
 
 
 // // // // STRETCH GOALS \\ \\ \\ \\

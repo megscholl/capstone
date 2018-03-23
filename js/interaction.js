@@ -200,6 +200,7 @@ seeResos += `
       </div>
       <div class="card-action">
         <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
+        <div id="snackbar">Your reservation has been deleted.</div>
       </div>
     </div>
   </div>
@@ -239,7 +240,7 @@ $("#userResos").click(function() {
     });
   }
 
-  $("#showcase").on("click", "#editEso", function() {
+  $(document).on("click", ".edit", function() {
     console.log("EDIT BUTTON CLICKED");
     // checkStatus();
   });
@@ -261,6 +262,7 @@ function deleteReso(resoID) {
   });
 }
 
+
 $(document).on("click", ".delete-reso", function() {
   let cancelReso = $(this).attr("id");
   console.log("cancel", cancelReso);
@@ -268,7 +270,21 @@ $(document).on("click", ".delete-reso", function() {
   .then(() => {
     showReso();
     console.log("CANCEL IN BUTTON CLICKED");
+
   });
+});
+
+
+$(document).on("click", ".delete-reso", function() {
+  console.log("toast function coming through");
+  // Get the snackbar DIV
+  var x = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  x.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
 });
 
 ///////////////////////////////////////////////////////
