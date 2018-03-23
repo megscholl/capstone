@@ -285,7 +285,7 @@ $(document).on("click", ".delete-reso", function() {
   x.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", 400000); }, 400000);
+  setTimeout(function(){ x.className = x.className.replace("show", 1000); }, 1000);
 });
 
 ///////////////////////////////////////////////////////
