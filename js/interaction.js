@@ -106,10 +106,6 @@ function setStatus(resoID) {
         });
       }
 
-// function checkStatus() {
-//   console.log("checking in checkstatus function");
-// }
-
 
 $(document).on("click", ".check-in", function() {
   let checkintoReso = $(this).attr("id");
@@ -161,17 +157,15 @@ function showReso() {
    
   });
 }
+
+
    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
 function listResos(rData) {
   console.log("rData: ", rData);
-  // keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
-  // console.log("keys: ", keys);
-
 
   let seeResos = "";
 
   for(let reservation in rData){
-    // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
       let rPlace = rData[reservation].restaurant;
       let rDate = rData[reservation].date;
@@ -230,7 +224,7 @@ $("#userResos").click(function() {
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
 
-  function editReso(resoFormObj, resoId) {
+  function editReso(resoFormObj) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
       type: 'PUT',
@@ -240,9 +234,61 @@ $("#userResos").click(function() {
     });
   }
 
+
+let modal = document.getElementById("showModal");
+
+function saveEdit(eData) {
+  console.log("save edit!");
+
+  
+  let editForm = "";
+
+  for(let reservation in eData){
+
+      let ePlace = eData[reservation].restaurant;
+      let eDate = eData[reservation].date;
+      let eTime = eData[reservation].time;
+      let eNum = eData[reservation].people;
+      let eOcc = eData[reservation].occasion;
+      let uglyeID = reservation;
+
+
+  editForm += `
+    <div id="modal1" class="modal">
+      <div class="modal-content">
+        <div class="col s4">
+          <div class="card small">
+            <div class="card-stacked">
+              <div class="card-content">
+                <h5>${ePlace}</h5>
+                <ul>
+                  <li><h6>Reservation</h6></li>
+                  <li>Date: ${eDate}</li>
+                  <li>Time: ${eTime}</li>
+                  <li>Party of ${eNum}</li>
+                  <li>Occasion: ${eOcc}</li>
+                </ul>
+              </div>
+              <div class="card-action">
+                <a id="${uglyeID}" class="save-edit">Save</a>
+                <div id="snackbar">Your reservation has been saved!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+`;
+
+}
+modal.innerHTML = editForm;
+
+}
+
+
   $(document).on("click", ".edit", function() {
-    console.log("EDIT BUTTON CLICKED");
-    // checkStatus();
+    // console.log("EDIT BUTTON CLICKED");
+    saveEdit();
   });
 ////////////////////////////////
 
@@ -274,7 +320,9 @@ $(document).on("click", ".delete-reso", function() {
   });
 });
 
-// from 
+
+
+
 $(document).on("click", ".delete-reso", function() {
   console.log("toast function coming through");
 
@@ -285,7 +333,7 @@ $(document).on("click", ".delete-reso", function() {
   x.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", 1000); }, 1000);
+  setTimeout(function(){ x.className = x.className.replace("show", 40000); }, 40000);
 });
 
 ///////////////////////////////////////////////////////
