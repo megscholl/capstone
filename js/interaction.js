@@ -226,8 +226,9 @@ $("#userResos").click(function() {
       });
   });
 
+
 // SAVE BUTTON
-$(document).on("click", ".edit-btn", function() {
+$(document).on("click", ".save-btn", function() {
   let resoObj = buildResoObj();
   let savedId = this.id;
  console.log("reso Object", resoObj);
@@ -301,7 +302,7 @@ function saveEdit(rData) {
           <br>
 
           <div class="col s2">
-            <a class="waves-effect waves-light btn edit-btn" id="${uglyeID}">Save</a>
+            <a class="waves-effect waves-light btn save-btn" id="${uglyeID}">Save</a>
             <div id="snackbar">Your reservation has been saved!</div>
           </div>
       </form>
@@ -311,7 +312,7 @@ function saveEdit(rData) {
 }}
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
-$(document).on("click", ".edit-btn", function() {
+$(document).on("click", ".save-btn", function() {
   console.log("save toast coming through");
 
   // Get the snackbar DIV
