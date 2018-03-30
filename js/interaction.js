@@ -8,6 +8,29 @@ let $ = require('../lib/node_modules/jquery'),
     dbRef = firebase.database().ref().child('reservations');
 
 
+    
+//////////////////////////////
+/////// LOGIN TO RESO ////////
+//////////////////////////////
+
+    let profile = document.getElementById("thing");
+
+    $('#login-btn').click(() => {
+        userProfile();
+    });
+    
+    function userProfile() {
+        $('#thing').html(` <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#reservations" class="waves-effect waves-light btn">Make a Reservation</a></li>
+        <li><a href="#nashvilleRestaurants" class="waves-effect waves-light btn">Nashville Restaurants</a></li>
+        <li><a id="userResos" class="waves-effect waves-light btn">Upcoming Reservations</a></li>
+          <a id="logout" class="waves-effect waves-light btn">Logout</a></li>
+        </ul>`);
+    }
+    
+    
+
+
 
 //////////////////////////////
 // BUILD A USER INTO FIREBASE
@@ -195,10 +218,11 @@ seeResos += `
 }
 
 // SHOW USERS RESO'S WHEN CLICKING 'UPCOMING RESERVATIONS' BUTTON
-$("#userResos").click(function() {
+$("#userResos").on("click", function() {
   // console.log("merp");
   showReso();
 });
+
 
 
 

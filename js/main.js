@@ -36,7 +36,8 @@ $("#login-btn").click(function() {
 
     $(document).on("click", "#logout", ()=> {
         // console.log("logout clicked");
-        login.googleLogOut();
+        login.logOut();
+        console.log("logged out?", userID);
         $("#userPic").addClass("d-none");
         $("#login-btn").removeClass("d-none");
         $("#logout").addClass("d-none");
