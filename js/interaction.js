@@ -200,8 +200,6 @@ $("#userResos").click(function() {
 
 
 
-
-
 ///////////////////////////////
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
@@ -220,6 +218,8 @@ $("#userResos").click(function() {
 // SHOW THE RESO EDIT FORM (SAVEEDIT) FUNCTION WHEN EDIT BUTTON IS CLICKED
   $(document).on("click", ".edit", function() {
     console.log("EDIT BUTTON CLICKED");
+    let savedId = this.id;
+   console.log("saved Id: ", savedId);
       getReso(event).then(function(rData) {
         console.log("edit rData", rData);
         saveEdit(rData);
@@ -229,10 +229,12 @@ $("#userResos").click(function() {
 // SAVE BUTTON
 $(document).on("click", "#save-btn", function() {
   let resoObj = buildResoObj();
+  // let savedId = this.id;
  console.log("reso Object", resoObj);
+//  console.log("saved Id: ", savedId);
    addReso(resoObj)
-   .then((editID) => {
-     console.log("edit ID: ", editID);
+   .then((savedId) => {
+     console.log("edit ID: ", savedId);
     //  console.log("SAVE BUTTON CLICKED");
     showReso();
    });
