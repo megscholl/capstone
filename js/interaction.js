@@ -8,6 +8,29 @@ let $ = require('../lib/node_modules/jquery'),
     dbRef = firebase.database().ref().child('reservations');
 
 
+    
+//////////////////////////////
+/////// LOGIN TO RESO ////////
+//////////////////////////////
+
+    let profile = document.getElementById("thing");
+
+    $('#login-btn').click(() => {
+        userProfile();
+    });
+    
+    function userProfile() {
+        $('#thing').html(` <ul id="nav-mobile" class="right hide-on-med-and-down">
+        <li><a href="#reservations" class="waves-effect waves-light btn">Make a Reservation</a></li>
+        <li><a href="#nashvilleRestaurants" class="waves-effect waves-light btn">Nashville Restaurants</a></li>
+        <li><a id="userResos" class="waves-effect waves-light btn">Upcoming Reservations</a></li>
+          <a id="logout" class="waves-effect waves-light btn">Logout</a></li>
+        </ul>`);
+    }
+    
+    
+
+
 
 //////////////////////////////
 // BUILD A USER INTO FIREBASE
@@ -163,7 +186,9 @@ function listResos(rData) {
 seeResos += `
 
 
-  <div id="editForm" class="col s4">
+  <div id="editForm">
+  </div>
+  <div class="col s4">
     <div class="card small">
       <div class="card-stacked">
           <div class="card-content">
@@ -193,10 +218,11 @@ seeResos += `
 }
 
 // SHOW USERS RESO'S WHEN CLICKING 'UPCOMING RESERVATIONS' BUTTON
-$("#userResos").click(function() {
+$(document).on("click", "#userResos", function() {
   // console.log("merp");
   showReso();
 });
+
 
 
 
@@ -265,31 +291,34 @@ function saveEdit(rData) {
   formFields = 
   `
   <div>
-    <h5>Edit your reservation</h5>
+    <h5>Edit your reservation at <span style="color: #669672">${ePlace}</span></h5>
     <form class="container form-inline" id="cta-buttons">
-        <div class="row form-text">
+      <div class="row form-text">
+            <div class="col">
+              Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate" value="${eDate}"></div>
+            </div>
+          <div class="col">  
+              Time: <div class="inline"><select class="browser-default" id="select-time">
+              <option id="time0" value="${eTime}">${eTime}</option>
+              <option id="time1" value="11:45 AM">11:45 AM</option>
+              <option id="time2" value="12:30 PM">12:30 PM</option>
+              <option id="time3" value="2:00 PM">2:00 PM</option>
+              <option id="time4" value="5:30 PM">5:30 PM</option>
+              <option id="time5" value="6:00 PM">6:00 PM</option>
+              <option id="time6" value="6:30 PM">6:30 PM</option>
+              <option id="time7" value="7:00 PM">7:00 PM</option>
+              <option id="time8" value="7:15 PM">7:15 PM</option>
+              <option id="time9" value="8:15 PM">8:15 PM</option>
+              <option id="time10" value="9:00 PM">9:00 PM</option></select>
+          </div>
+        
         <div class="col">
-        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate" value="${eDate}"></div>
-         </div>
-         <div class="col">  
-         Time: <div class="inline"><select class="browser-default" id="select-time">
-         <option id="time0" value="${eTime}"></option>
-         <option id="time1" value="11:45 AM">11:45 AM</option>
-         <option id="time2" value="12:30 PM">12:30 PM</option>
-         <option id="time3" value="2:00 PM">2:00 PM</option>
-         <option id="time4" value="5:30 PM">5:30 PM</option>
-         <option id="time5" value="6:00 PM">6:00 PM</option>
-          <option id="time6" value="6:30 PM">6:30 PM</option>
-          <option id="time7" value="7:00 PM">7:00 PM</option>
-          <option id="time8" value="7:15 PM">7:15 PM</option>
-          <option id="time9" value="8:15 PM">8:15 PM</option>
-          <option id="time10" value="9:00 PM">9:00 PM</option></select>
-        </div>
-        </div>
-          How many people in your party? 
+          Party of  
             <div class="input-field inline">
             <input id="select-people" type="number" class="validate" value="${eNum}">
             </div>
+          </div>
+          <div class="col">
           Occasion: <select class="browser-default" id="select-occasion">
               <option selected value="${eOcc}"></option>
               <option id="occ1" value="birthday">Birthday</option>
@@ -299,17 +328,19 @@ function saveEdit(rData) {
               <option id="occ5" value="ladies">Ladies Night</option>
               </select>
           </div>
-          <br>
-
-          <div class="col s2">
+          </div>
+          <div class="col">
             <a class="waves-effect waves-light btn save-btn" id="${uglyeID}">Save</a>
             <div id="snackbar">Your reservation has been saved!</div>
+          </div>
           </div>
       </form>
   </div>
   `;
   $("#editForm").html(formFields);
 }}
+
+
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
 $(document).on("click", ".save-btn", function() {

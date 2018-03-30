@@ -6,7 +6,6 @@ firebase = require('./configure'),
     user = require('./user');
 
 
-
     
 
 // console.log("user logged in profile");
