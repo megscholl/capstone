@@ -163,7 +163,9 @@ function listResos(rData) {
 seeResos += `
 
 
-  <div id="editForm" class="col s4">
+  <div id="editForm">
+  </div>
+  <div class="col s4">
     <div class="card small">
       <div class="card-stacked">
           <div class="card-content">
@@ -265,31 +267,34 @@ function saveEdit(rData) {
   formFields = 
   `
   <div>
-    <h5>Edit your reservation</h5>
+    <h5>Edit your reservation at <span style="color: #669672">${ePlace}</span></h5>
     <form class="container form-inline" id="cta-buttons">
-        <div class="row form-text">
+      <div class="row form-text">
+            <div class="col">
+              Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate" value="${eDate}"></div>
+            </div>
+          <div class="col">  
+              Time: <div class="inline"><select class="browser-default" id="select-time">
+              <option id="time0" value="${eTime}">${eTime}</option>
+              <option id="time1" value="11:45 AM">11:45 AM</option>
+              <option id="time2" value="12:30 PM">12:30 PM</option>
+              <option id="time3" value="2:00 PM">2:00 PM</option>
+              <option id="time4" value="5:30 PM">5:30 PM</option>
+              <option id="time5" value="6:00 PM">6:00 PM</option>
+              <option id="time6" value="6:30 PM">6:30 PM</option>
+              <option id="time7" value="7:00 PM">7:00 PM</option>
+              <option id="time8" value="7:15 PM">7:15 PM</option>
+              <option id="time9" value="8:15 PM">8:15 PM</option>
+              <option id="time10" value="9:00 PM">9:00 PM</option></select>
+          </div>
+        
         <div class="col">
-        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate" value="${eDate}"></div>
-         </div>
-         <div class="col">  
-         Time: <div class="inline"><select class="browser-default" id="select-time">
-         <option id="time0" value="${eTime}"></option>
-         <option id="time1" value="11:45 AM">11:45 AM</option>
-         <option id="time2" value="12:30 PM">12:30 PM</option>
-         <option id="time3" value="2:00 PM">2:00 PM</option>
-         <option id="time4" value="5:30 PM">5:30 PM</option>
-         <option id="time5" value="6:00 PM">6:00 PM</option>
-          <option id="time6" value="6:30 PM">6:30 PM</option>
-          <option id="time7" value="7:00 PM">7:00 PM</option>
-          <option id="time8" value="7:15 PM">7:15 PM</option>
-          <option id="time9" value="8:15 PM">8:15 PM</option>
-          <option id="time10" value="9:00 PM">9:00 PM</option></select>
-        </div>
-        </div>
-          How many people in your party? 
+          Party of  
             <div class="input-field inline">
             <input id="select-people" type="number" class="validate" value="${eNum}">
             </div>
+          </div>
+          <div class="col">
           Occasion: <select class="browser-default" id="select-occasion">
               <option selected value="${eOcc}"></option>
               <option id="occ1" value="birthday">Birthday</option>
@@ -299,17 +304,19 @@ function saveEdit(rData) {
               <option id="occ5" value="ladies">Ladies Night</option>
               </select>
           </div>
-          <br>
-
-          <div class="col s2">
+          </div>
+          <div class="col">
             <a class="waves-effect waves-light btn save-btn" id="${uglyeID}">Save</a>
             <div id="snackbar">Your reservation has been saved!</div>
+          </div>
           </div>
       </form>
   </div>
   `;
   $("#editForm").html(formFields);
 }}
+
+
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
 $(document).on("click", ".save-btn", function() {
