@@ -218,7 +218,7 @@ seeResos += `
 }
 
 // SHOW USERS RESO'S WHEN CLICKING 'UPCOMING RESERVATIONS' BUTTON
-$("#userResos").on("click", function() {
+$(document).on("click", "#userResos", function() {
   // console.log("merp");
   showReso();
 });
