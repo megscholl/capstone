@@ -207,7 +207,7 @@ $("#userResos").click(function() {
   function editReso(resoFormObj) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
-      type: 'POST',
+      type: 'PUT',
       data: JSON.stringify(resoFormObj)
     }).done((data) => {
       console.log("edit: ", data);
@@ -227,7 +227,7 @@ $("#userResos").click(function() {
   });
 
 // SAVE BUTTON
-$(document).on("click", "#save-btn", function() {
+$(document).on("click", ".edit-btn", function() {
   let resoObj = buildResoObj();
   // let savedId = this.id;
  console.log("reso Object", resoObj);
@@ -246,8 +246,20 @@ let formFields;
 
 // EDIT RESO FORM
 function saveEdit(rData) {
-  console.log("save edit!");
-  // console.log("rdata: ", rData);
+  // console.log("save edit!");
+  console.log("rdata FOR SAVE EDIT: ", rData);
+
+  for(let reservation in rData){
+
+    let ePlace = rData[reservation].restaurant;
+    let eDate = rData[reservation].date;
+    let eTime = rData[reservation].time;
+    let eNum = rData[reservation].people;
+    let eOcc = rData[reservation].occasion;
+    let uglyeID = reservation;
+
+    // console.log("Edit User's reservation: ", "place: ", ePlace, "date: ", eDate, "time: ", eTime, "party of ", eNum, "occasion: ", eOcc);
+
 
   formFields = 
   `
@@ -256,32 +268,29 @@ function saveEdit(rData) {
     <form class="container form-inline" id="cta-buttons">
         <div class="row form-text">
         <div class="col">
-        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate"></div>
+        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate" value="${eDate}"></div>
          </div>
          <div class="col">  
          Time: <div class="inline"><select class="browser-default" id="select-time">
-         <option id="time0" value="select">Select</option>
+         <option id="time0" value="${eTime}"></option>
          <option id="time1" value="11:45 AM">11:45 AM</option>
          <option id="time2" value="12:30 PM">12:30 PM</option>
          <option id="time3" value="2:00 PM">2:00 PM</option>
          <option id="time4" value="5:30 PM">5:30 PM</option>
          <option id="time5" value="6:00 PM">6:00 PM</option>
-         <option id="time6" value="6:30 PM">6:30 PM</option>
-          <option id="time7" value="6:30 PM">6:30 PM</option>
-          <option id="time8" value="7:00 PM">7:00 PM</option>
-          <option id="time9" value="7:00 PM">7:00 PM</option>
-          <option id="time10" value="7:15 PM">7:15 PM</option>
-          <option id="time11" value="8:15 PM">8:15 PM</option>
-          <option id="time12" value="8:15 PM">8:15 PM</option>
-          <option id="time13" value="9:00 PM">9:00 PM</option></select>
+          <option id="time6" value="6:30 PM">6:30 PM</option>
+          <option id="time7" value="7:00 PM">7:00 PM</option>
+          <option id="time8" value="7:15 PM">7:15 PM</option>
+          <option id="time9" value="8:15 PM">8:15 PM</option>
+          <option id="time10" value="9:00 PM">9:00 PM</option></select>
         </div>
         </div>
           How many people in your party? 
             <div class="input-field inline">
-            <input id="select-people" type="number" class="validate">
+            <input id="select-people" type="number" class="validate" value="${eNum}">
             </div>
           Occasion: <select class="browser-default" id="select-occasion">
-              <option selected></option>
+              <option selected value="${eOcc}"></option>
               <option id="occ1" value="birthday">Birthday</option>
               <option id="occ2" value="anniversary">Anniversary</option>
               <option id="occ3" value="business">Business Meeting</option>
@@ -292,14 +301,14 @@ function saveEdit(rData) {
           <br>
 
           <div class="col s2">
-            <a class="waves-effect waves-light btn edit-btn" id="save-btn">Save</a>
+            <a class="waves-effect waves-light btn edit-btn" id="${uglyeID}">Save</a>
             <div id="snackbar">Your reservation has been saved!</div>
           </div>
       </form>
   </div>
   `;
   $("#editForm").html(formFields);
-}
+}}
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
 $(document).on("click", ".edit-btn", function() {
