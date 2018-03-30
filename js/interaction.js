@@ -221,9 +221,8 @@ $("#userResos").click(function() {
   $(document).on("click", ".edit", function() {
     console.log("EDIT BUTTON CLICKED");
       getReso(event).then(function(rData) {
-        console.log("rData", rData);
+        console.log("edit rData", rData);
         saveEdit(rData);
-        saveEdit();
       });
   });
 
@@ -231,10 +230,11 @@ $("#userResos").click(function() {
 $(document).on("click", "#save-btn", function() {
   let resoObj = buildResoObj();
  console.log("reso Object", resoObj);
-   editReso(resoObj)
+   addReso(resoObj)
    .then((editID) => {
      console.log("edit ID: ", editID);
-     console.log("SAVE BUTTON CLICKED");
+    //  console.log("SAVE BUTTON CLICKED");
+    showReso();
    });
  });
 
