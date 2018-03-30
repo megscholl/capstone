@@ -229,9 +229,9 @@ $("#userResos").click(function() {
 // SAVE BUTTON
 $(document).on("click", ".edit-btn", function() {
   let resoObj = buildResoObj();
-  // let savedId = this.id;
+  let savedId = this.id;
  console.log("reso Object", resoObj);
-//  console.log("saved Id: ", savedId);
+ console.log("saved Id: ", savedId);
    addReso(resoObj)
    .then((savedId) => {
      console.log("edit ID: ", savedId);
