@@ -65,4 +65,4 @@ restaurantOptions();
 
 
 
-  module.exports = {getRestaurants, loopRestaurants};
+  module.exports = {getRestaurants, loopRestaurants, restaurantOptions};
