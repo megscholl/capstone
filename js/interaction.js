@@ -36,11 +36,8 @@ function addUser(userObject) {
     });
   }
   // POST - Submits data to be processed to a specified resource. Takes one parameter.
-/////////////////////////////////////////////////////
 
-
-
-
+  
 
 ///////////////////////////////
 // ADD RESERVATION TO FIREBASE
@@ -83,9 +80,6 @@ $("#Reserve-btn").click(function() {
     });
 });
 
-///////////////////////////////////////////////////////
-
-
 
 
 //////////////////////////////////
@@ -106,10 +100,6 @@ function setStatus(resoID) {
         });
       }
 
-// function checkStatus() {
-//   console.log("checking in checkstatus function");
-// }
-
 
 $(document).on("click", ".check-in", function() {
   let checkintoReso = $(this).attr("id");
@@ -120,9 +110,6 @@ $(document).on("click", ".check-in", function() {
   //   console.log("CHECK IN BUTTON CLICKED");
   
 });
-
-///////////////////////////////////////////////////////
-
 
 
 
@@ -135,7 +122,7 @@ let seeMore = document.getElementById("showcase");
 
 // var rStatus;
 
-
+ 
 function getReso(reso) {
   // console.log("AJAX", user.getUser());
   return $.ajax({
@@ -161,17 +148,15 @@ function showReso() {
    
   });
 }
+
+
    // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
 function listResos(rData) {
   console.log("rData: ", rData);
-  // keys = Object.entries(rData).map(e => Object.assign(e[1], { key: e[0] }));
-  // console.log("keys: ", keys);
-
 
   let seeResos = "";
 
   for(let reservation in rData){
-    // console.log("restaurants selected in firebase reservations: ", keys[a].restaurant);
 
       let rPlace = rData[reservation].restaurant;
       let rDate = rData[reservation].date;
@@ -185,6 +170,7 @@ function listResos(rData) {
 
 seeResos += `
 
+<div id="editForm"></div>
 <div class="col s4">
   <div class="card small">
     <div class="card-stacked">
@@ -217,12 +203,6 @@ $("#userResos").click(function() {
 });
 
 
-//////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 
@@ -230,19 +210,87 @@ $("#userResos").click(function() {
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
 
-  function editReso(resoFormObj, resoId) {
+  function editReso(resoFormObj) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
-      type: 'PUT',
+      type: 'POST',
       data: JSON.stringify(resoFormObj)
     }).done((data) => {
+      console.log("edit: ", data);
       return data;
     });
   }
 
+
+
+let formFields;
+
+function saveEdit(eData) {
+  console.log("save edit!");
+
+  formFields = 
+  `
+  <div>
+    <h5>Edit your reservation</h5>
+    <form class="container form-inline" id="cta-buttons">
+        <div class="row form-text">
+        <div class="col">
+        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate"></div>
+         </div>
+         <div class="col">  
+         Time: <div class="inline"><select class="browser-default" id="select-time">
+         <option id="time1" value="11:45 AM">11:45 AM</option>
+         <option id="time2" value="12:30 PM">12:30 PM</option>
+         <option id="time3" value="2:00 PM">2:00 PM</option>
+         <option id="time4" value="5:30 PM">5:30 PM</option>
+         <option id="time5" value="6:00 PM">6:00 PM</option>
+         <option id="time6" value="6:30 PM">6:30 PM</option>
+          <option id="time7" value="6:30 PM">6:30 PM</option>
+          <option id="time8" value="7:00 PM">7:00 PM</option>
+          <option id="time9" value="7:00 PM">7:00 PM</option>
+          <option id="time10" value="7:15 PM">7:15 PM</option>
+          <option id="time11" value="8:15 PM">8:15 PM</option>
+          <option id="time12" value="8:15 PM">8:15 PM</option>
+          <option id="time13" value="9:00 PM">9:00 PM</option></select>
+        </div>
+        </div>
+          How many people in your party? 
+            <div class="input-field inline">
+            <input id="select-people" type="number" class="validate">
+            </div>
+          Occasion: <select class="browser-default" id="select-occasion">
+              <option selected></option>
+              <option id="occ1" value="birthday">Birthday</option>
+              <option id="occ2" value="anniversary">Anniversary</option>
+              <option id="occ3" value="business">Business Meeting</option>
+              <option id="occ4" value="other">Other Special Occassion</option>
+              <option id="occ5" value="ladies">Ladies Night</option>
+              </select>
+          </div>
+          <br>
+
+          <div class="col s2">
+            <a class="waves-effect waves-light btn reserve-btn"id="save-btn">Save my Reservation</a>
+          </div>
+      </form>
+  </div>
+  `;
+  $("#editForm").html(formFields);
+}
+
+$(document).on("click", ".save-btn", function() {
+  let resoObj = $(this).attr("id");
+  console.log("editObject", resoObj);
+  editReso(resoObj)
+  .then((resoObj) => {
+    showReso();
+    console.log("EDIT BUTTON CLICKED");
+  });
+});
+
   $(document).on("click", ".edit", function() {
     console.log("EDIT BUTTON CLICKED");
-    // checkStatus();
+    saveEdit();
   });
 ////////////////////////////////
 
@@ -269,14 +317,17 @@ $(document).on("click", ".delete-reso", function() {
   deleteReso(cancelReso)
   .then(() => {
     showReso();
-    console.log("CANCEL IN BUTTON CLICKED");
+    console.log("CANCEL BUTTON CLICKED");
 
   });
 });
 
 
+
+
 $(document).on("click", ".delete-reso", function() {
   console.log("toast function coming through");
+
   // Get the snackbar DIV
   var x = document.getElementById("snackbar");
 
@@ -284,7 +335,7 @@ $(document).on("click", ".delete-reso", function() {
   x.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", ""); }, 10000);
+  setTimeout(function(){ x.className = x.className.replace("show", 40000);},40000);
 });
 
 ///////////////////////////////////////////////////////
@@ -293,4 +344,4 @@ $(document).on("click", ".delete-reso", function() {
 
 
 
-  module.exports = {buildUserObject, addUser, addReso, deleteReso, showReso, editReso};
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, showReso, editReso, saveEdit};
