@@ -134,25 +134,17 @@ function getReso(reso) {
           return error;
         });
       }
-      
-
-
-let keys;
-let listReservations;
 
 function showReso() {
   getReso(event).then(function(rData) {
     // console.log("rData", rData);
     listResos(rData);
-
-   
   });
 }
 
-
-   // THIS CODE CONVERTs THE FB RESERVATION OBJECT INTO THEIR OWN ARRAYS
+// SHOWS USERS' UPCOMING RESERVATIONS
 function listResos(rData) {
-  console.log("rData: ", rData);
+  // console.log("rData: ", rData);
 
   let seeResos = "";
 
@@ -170,35 +162,39 @@ function listResos(rData) {
 
 seeResos += `
 
-<div id="editForm"></div>
-<div class="col s4">
-  <div class="card small">
-    <div class="card-stacked">
-      <div class="card-content">
-        <h5>${rPlace}</h5>
-        <ul>
-          <li><h6>Reservation</h6></li>
-          <li>Date: ${rDate}</li>
-          <li>Time: ${rTime}</li>
-          <li>Party of ${rNum}</li>
-          <li>Occasion: ${rOcc}</li>
-        </ul>
-      </div>
-      <div class="card-action">
-        <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
-        <div id="snackbar">Your reservation has been deleted.</div>
+
+  <div id="editForm" class="col s4">
+    <div class="card small">
+      <div class="card-stacked">
+          <div class="card-content">
+            <h5>${rPlace}</h5>
+              <ul>
+                <li><h6>Reservation</h6></li>
+                <li>Date: ${rDate}</li>
+                <li>Time: ${rTime}</li>
+                <li>Party of ${rNum}</li>
+                <li>Occasion: ${rOcc}</li>
+              </ul>
+          </div>
+          <div class="card-action">
+            <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
+            <div id="snackbar">Your reservation has been deleted.
+            </div>
+          </div>
       </div>
     </div>
   </div>
-  </div>
+
+
 
   `;
   }
   seeMore.innerHTML = seeResos;
 }
 
+// SHOW USERS RESO'S WHEN CLICKING 'UPCOMING RESERVATIONS' BUTTON
 $("#userResos").click(function() {
-  console.log("merp");
+  // console.log("merp");
   showReso();
 });
 
@@ -221,12 +217,35 @@ $("#userResos").click(function() {
     });
   }
 
+// SHOW THE RESO EDIT FORM (SAVEEDIT) FUNCTION WHEN EDIT BUTTON IS CLICKED
+  $(document).on("click", ".edit", function() {
+    console.log("EDIT BUTTON CLICKED");
+      getReso(event).then(function(rData) {
+        console.log("rData", rData);
+        saveEdit(rData);
+        saveEdit();
+      });
+  });
+
+// SAVE BUTTON
+$(document).on("click", "#save-btn", function() {
+  let resoObj = buildResoObj();
+ console.log("reso Object", resoObj);
+   editReso(resoObj)
+   .then((editID) => {
+     console.log("edit ID: ", editID);
+     console.log("SAVE BUTTON CLICKED");
+   });
+ });
+
 
 
 let formFields;
 
-function saveEdit(eData) {
+// EDIT RESO FORM
+function saveEdit(rData) {
   console.log("save edit!");
+  // console.log("rdata: ", rData);
 
   formFields = 
   `
@@ -239,6 +258,7 @@ function saveEdit(eData) {
          </div>
          <div class="col">  
          Time: <div class="inline"><select class="browser-default" id="select-time">
+         <option id="time0" value="select">Select</option>
          <option id="time1" value="11:45 AM">11:45 AM</option>
          <option id="time2" value="12:30 PM">12:30 PM</option>
          <option id="time3" value="2:00 PM">2:00 PM</option>
@@ -270,7 +290,8 @@ function saveEdit(eData) {
           <br>
 
           <div class="col s2">
-            <a class="waves-effect waves-light btn reserve-btn"id="save-btn">Save my Reservation</a>
+            <a class="waves-effect waves-light btn edit-btn" id="save-btn">Save</a>
+            <div id="snackbar">Your reservation has been saved!</div>
           </div>
       </form>
   </div>
@@ -278,21 +299,21 @@ function saveEdit(eData) {
   $("#editForm").html(formFields);
 }
 
-$(document).on("click", ".save-btn", function() {
-  let resoObj = $(this).attr("id");
-  console.log("editObject", resoObj);
-  editReso(resoObj)
-  .then((resoObj) => {
-    showReso();
-    console.log("EDIT BUTTON CLICKED");
-  });
+// SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
+$(document).on("click", ".edit-btn", function() {
+  console.log("save toast coming through");
+
+  // Get the snackbar DIV
+  var snackSave = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  snackSave.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
 });
 
-  $(document).on("click", ".edit", function() {
-    console.log("EDIT BUTTON CLICKED");
-    saveEdit();
-  });
-////////////////////////////////
+
 
 
 
@@ -310,7 +331,7 @@ function deleteReso(resoID) {
   });
 }
 
-
+// RELOAD DOM WHEN RESO IS DELETED
 $(document).on("click", ".delete-reso", function() {
   let cancelReso = $(this).attr("id");
   console.log("cancel", cancelReso);
@@ -322,20 +343,18 @@ $(document).on("click", ".delete-reso", function() {
   });
 });
 
-
-
-
+// SNACKBAR (TOAST) NOTIFICATION WHEN RESO DELETED
 $(document).on("click", ".delete-reso", function() {
-  console.log("toast function coming through");
+  console.log("save toast coming through");
 
   // Get the snackbar DIV
-  var x = document.getElementById("snackbar");
+  var snackSave = document.getElementById("snackbar");
 
   // Add the "show" class to DIV
-  x.className = "show";
+  snackSave.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", 40000);},40000);
+  setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
 });
 
 ///////////////////////////////////////////////////////
