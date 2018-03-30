@@ -36,11 +36,8 @@ function addUser(userObject) {
     });
   }
   // POST - Submits data to be processed to a specified resource. Takes one parameter.
-/////////////////////////////////////////////////////
 
-
-
-
+  
 
 ///////////////////////////////
 // ADD RESERVATION TO FIREBASE
@@ -83,9 +80,6 @@ $("#Reserve-btn").click(function() {
     });
 });
 
-///////////////////////////////////////////////////////
-
-
 
 
 //////////////////////////////////
@@ -117,9 +111,6 @@ $(document).on("click", ".check-in", function() {
   
 });
 
-///////////////////////////////////////////////////////
-
-
 
 
 ////////////////////////////////
@@ -131,7 +122,7 @@ let seeMore = document.getElementById("showcase");
 
 // var rStatus;
 
-
+ 
 function getReso(reso) {
   // console.log("AJAX", user.getUser());
   return $.ajax({
@@ -179,6 +170,7 @@ function listResos(rData) {
 
 seeResos += `
 
+<div id="editForm"></div>
 <div class="col s4">
   <div class="card small">
     <div class="card-stacked">
@@ -211,12 +203,6 @@ $("#userResos").click(function() {
 });
 
 
-//////////////////////////////////////////////////////////////
-
-
-
-
-
 
 
 
@@ -227,67 +213,83 @@ $("#userResos").click(function() {
   function editReso(resoFormObj) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
-      type: 'PUT',
+      type: 'POST',
       data: JSON.stringify(resoFormObj)
     }).done((data) => {
+      console.log("edit: ", data);
       return data;
     });
   }
 
 
-let modal = document.getElementById("showModal");
+
+let formFields;
 
 function saveEdit(eData) {
   console.log("save edit!");
 
-  
-  let editForm = "";
-
-  for(let reservation in eData){
-
-      let ePlace = eData[reservation].restaurant;
-      let eDate = eData[reservation].date;
-      let eTime = eData[reservation].time;
-      let eNum = eData[reservation].people;
-      let eOcc = eData[reservation].occasion;
-      let uglyeID = reservation;
-
-
-  editForm += `
-    <div id="modal1" class="modal">
-      <div class="modal-content">
-        <div class="col s4">
-          <div class="card small">
-            <div class="card-stacked">
-              <div class="card-content">
-                <h5>${ePlace}</h5>
-                <ul>
-                  <li><h6>Reservation</h6></li>
-                  <li>Date: ${eDate}</li>
-                  <li>Time: ${eTime}</li>
-                  <li>Party of ${eNum}</li>
-                  <li>Occasion: ${eOcc}</li>
-                </ul>
-              </div>
-              <div class="card-action">
-                <a id="${uglyeID}" class="save-edit">Save</a>
-                <div id="snackbar">Your reservation has been saved!</div>
-              </div>
-            </div>
-          </div>
+  formFields = 
+  `
+  <div>
+    <h5>Edit your reservation</h5>
+    <form class="container form-inline" id="cta-buttons">
+        <div class="row form-text">
+        <div class="col">
+        Date:  <div class="input-field inline"> <input id="select-date" type="date" class="validate"></div>
+         </div>
+         <div class="col">  
+         Time: <div class="inline"><select class="browser-default" id="select-time">
+         <option id="time1" value="11:45 AM">11:45 AM</option>
+         <option id="time2" value="12:30 PM">12:30 PM</option>
+         <option id="time3" value="2:00 PM">2:00 PM</option>
+         <option id="time4" value="5:30 PM">5:30 PM</option>
+         <option id="time5" value="6:00 PM">6:00 PM</option>
+         <option id="time6" value="6:30 PM">6:30 PM</option>
+          <option id="time7" value="6:30 PM">6:30 PM</option>
+          <option id="time8" value="7:00 PM">7:00 PM</option>
+          <option id="time9" value="7:00 PM">7:00 PM</option>
+          <option id="time10" value="7:15 PM">7:15 PM</option>
+          <option id="time11" value="8:15 PM">8:15 PM</option>
+          <option id="time12" value="8:15 PM">8:15 PM</option>
+          <option id="time13" value="9:00 PM">9:00 PM</option></select>
         </div>
-      </div>
-    </div>
-`;
+        </div>
+          How many people in your party? 
+            <div class="input-field inline">
+            <input id="select-people" type="number" class="validate">
+            </div>
+          Occasion: <select class="browser-default" id="select-occasion">
+              <option selected></option>
+              <option id="occ1" value="birthday">Birthday</option>
+              <option id="occ2" value="anniversary">Anniversary</option>
+              <option id="occ3" value="business">Business Meeting</option>
+              <option id="occ4" value="other">Other Special Occassion</option>
+              <option id="occ5" value="ladies">Ladies Night</option>
+              </select>
+          </div>
+          <br>
 
+          <div class="col s2">
+            <a class="waves-effect waves-light btn reserve-btn"id="save-btn">Save my Reservation</a>
+          </div>
+      </form>
+  </div>
+  `;
+  $("#editForm").html(formFields);
 }
-modal.innerHTML = editForm;
 
-}
-
+$(document).on("click", ".save-btn", function() {
+  let resoObj = $(this).attr("id");
+  console.log("editObject", resoObj);
+  editReso(resoObj)
+  .then((resoObj) => {
+    showReso();
+    console.log("EDIT BUTTON CLICKED");
+  });
+});
 
   $(document).on("click", ".edit", function() {
-    // console.log("EDIT BUTTON CLICKED");
+    console.log("EDIT BUTTON CLICKED");
     saveEdit();
   });
 ////////////////////////////////
@@ -315,7 +317,7 @@ $(document).on("click", ".delete-reso", function() {
   deleteReso(cancelReso)
   .then(() => {
     showReso();
-    console.log("CANCEL IN BUTTON CLICKED");
+    console.log("CANCEL BUTTON CLICKED");
 
   });
 });
@@ -333,7 +335,7 @@ $(document).on("click", ".delete-reso", function() {
   x.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ x.className = x.className.replace("show", 40000); }, 40000);
+  setTimeout(function(){ x.className = x.className.replace("show", 40000);},40000);
 });
 
 ///////////////////////////////////////////////////////
@@ -342,4 +344,4 @@ $(document).on("click", ".delete-reso", function() {
 
 
 
-  module.exports = {buildUserObject, addUser, addReso, deleteReso, showReso, editReso};
+  module.exports = {buildUserObject, addUser, addReso, deleteReso, showReso, editReso, saveEdit};

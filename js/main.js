@@ -28,9 +28,20 @@ $("#login-btn").click(function() {
       login.setUser(result.user.uid);
       userID = result.user.uid;
       console.log("login setUser: ", userID);
+          $("#login-btn").addClass("d-none");
+          $("#userPic").removeClass("d-none").html(`<img src="${result.user.photoURL}" alt="${result.user.displayName} photo from Google" class="profPic rounded-circle">`);
+          console.log("login complete!");
+      });
     });
-});
 
+    $(document).on("click", "#logout", ()=> {
+        // console.log("logout clicked");
+        login.googleLogOut();
+        $("#userPic").addClass("d-none");
+        $("#login-btn").removeClass("d-none");
+        $("#logout").addClass("d-none");
+        $("#secondaryLogin").removeClass("d-none");
+      });
 
 
 
