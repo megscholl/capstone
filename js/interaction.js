@@ -230,9 +230,9 @@ $(document).on("click", "#userResos", function() {
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
 
-  function editReso(resoFormObj) {
+  function editReso(resoID, resoFormObj) {
     return $.ajax({
-      url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
+      url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
       type: 'PUT',
       data: JSON.stringify(resoFormObj)
     }).done((data) => {
