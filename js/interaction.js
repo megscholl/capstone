@@ -154,8 +154,6 @@ $(document).on("click", ".check-in", function() {
 var resoData = [];
 let seeMore = document.getElementById("showcase");
 
-// var rStatus;
-
  
 function getReso(reso) {
   // console.log("AJAX", user.getUser());
@@ -171,7 +169,7 @@ function getReso(reso) {
 
 function showReso() {
   getReso(event).then(function(rData) {
-    // console.log("rData", rData);
+    console.log("rData", rData);
     listResos(rData);
   });
 }
@@ -232,6 +230,8 @@ seeResos += `
 // SHOW USERS RESO'S WHEN CLICKING 'UPCOMING RESERVATIONS' BUTTON
 $(document).on("click", "#userResos", function() {
   // console.log("merp");
+  $("#showcase").removeClass("hide");
+  $("#main-img").addClass("hide");
   showReso();
 });
 
