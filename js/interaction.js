@@ -98,8 +98,8 @@ function addUser(userObject) {
 $("#Reserve-btn").click(function() {
   let resObj = buildResoObj();
     addReso(resObj).then((resoID) => {
-      console.log("the reserve table has been clicked", resObj);
-
+      // console.log("the reserve table has been clicked", resObj);
+      showReso();
     });
 });
 
@@ -118,7 +118,7 @@ function setStatus(resoID) {
         }).done((userID) => {
           return userID;
         }).fail((error) => {
-          console.log("error", error);
+          // console.log("error", error);
           return error;
         });
       }
@@ -126,7 +126,7 @@ function setStatus(resoID) {
 
 $(document).on("click", ".check-in", function() {
   let checkintoReso = $(this).attr("id");
-  console.log("check in", checkintoReso);
+  // console.log("check in", checkintoReso);
   setStatus(checkintoReso);
   // .then(() => {
   //   checkStatus();
@@ -230,21 +230,21 @@ $(document).on("click", "#userResos", function() {
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
 
-  function editReso(resoFormObj) {
+  function editReso(resoFormObj, resoID) {
     return $.ajax({
-      url: `${firebase.getFBsettings().databaseURL}/reservations/${resoFormObj}.json`,
+      url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
       type: 'PUT',
       data: JSON.stringify(resoFormObj)
-    }).done((data) => {
-      console.log("edit: ", data);
-      return data;
+    }).done((userID) => {
+      console.log("resoFormObj: ", resoFormObj);
+      return userID;
     });
   }
 
 // SHOW THE RESO EDIT FORM (SAVEEDIT) FUNCTION WHEN EDIT BUTTON IS CLICKED
   $(document).on("click", ".edit", function() {
-    console.log("EDIT BUTTON CLICKED");
-    let savedId = this.id;
+    // console.log("EDIT BUTTON CLICKED");
+    let savedId = $(this).attr("id");
    console.log("saved Id: ", savedId);
       getReso(event).then(function(rData) {
         console.log("edit rData", rData);
@@ -255,13 +255,14 @@ $(document).on("click", "#userResos", function() {
 
 // SAVE BUTTON
 $(document).on("click", ".save-btn", function() {
-  let resoObj = buildResoObj();
-  let savedId = this.id;
- console.log("reso Object", resoObj);
+
+  let resoFormObj = buildResoObj();
+  let savedId = $(this).attr("id");
+ console.log("reso Object", resoFormObj);
  console.log("saved Id: ", savedId);
-   addReso(resoObj)
+   editReso(resoFormObj, savedId)
    .then((savedId) => {
-     console.log("edit ID: ", savedId);
+     console.log("firebase object: ", savedId);
     //  console.log("SAVE BUTTON CLICKED");
     showReso();
    });
@@ -274,7 +275,7 @@ let formFields;
 // EDIT RESO FORM
 function saveEdit(rData) {
   // console.log("save edit!");
-  console.log("rdata FOR SAVE EDIT: ", rData);
+  // console.log("rdata FOR SAVE EDIT: ", rData);
 
   for(let reservation in rData){
 
@@ -344,7 +345,7 @@ function saveEdit(rData) {
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
 $(document).on("click", ".save-btn", function() {
-  console.log("save toast coming through");
+  // console.log("save toast coming through");
 
   // Get the snackbar DIV
   var snackSave = document.getElementById("snackbar");
@@ -377,18 +378,17 @@ function deleteReso(resoID) {
 // RELOAD DOM WHEN RESO IS DELETED
 $(document).on("click", ".delete-reso", function() {
   let cancelReso = $(this).attr("id");
-  console.log("cancel", cancelReso);
+  // console.log("cancel", cancelReso);
   deleteReso(cancelReso)
   .then(() => {
     showReso();
-    console.log("CANCEL BUTTON CLICKED");
-
+    // console.log("CANCEL BUTTON CLICKED");
   });
 });
 
 // SNACKBAR (TOAST) NOTIFICATION WHEN RESO DELETED
 $(document).on("click", ".delete-reso", function() {
-  console.log("save toast coming through");
+  // console.log("save toast coming through");
 
   // Get the snackbar DIV
   var snackSave = document.getElementById("snackbar");
@@ -398,6 +398,7 @@ $(document).on("click", ".delete-reso", function() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
+  showReso();
 });
 
 ///////////////////////////////////////////////////////
