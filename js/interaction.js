@@ -365,7 +365,10 @@ $(document).on("click", ".save-btn", function() {
   snackSave.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
+  setTimeout(function(){ 
+    snackSave.className = snackSave.className.replace("show", "");},3000);
+
+    console.log("save snackbar");
 });
 
 
