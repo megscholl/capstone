@@ -99,7 +99,7 @@ $("#Reserve-btn").click(function() {
   let resObj = buildResoObj();
     addReso(resObj).then((resoID) => {
       console.log("the reserve table has been clicked", resObj);
-
+      showReso();
     });
 });
 
@@ -244,7 +244,7 @@ $(document).on("click", "#userResos", function() {
 // SHOW THE RESO EDIT FORM (SAVEEDIT) FUNCTION WHEN EDIT BUTTON IS CLICKED
   $(document).on("click", ".edit", function() {
     console.log("EDIT BUTTON CLICKED");
-    let savedId = this.id;
+    let savedId = $(this).attr("id");
    console.log("saved Id: ", savedId);
       getReso(event).then(function(rData) {
         console.log("edit rData", rData);
@@ -255,13 +255,14 @@ $(document).on("click", "#userResos", function() {
 
 // SAVE BUTTON
 $(document).on("click", ".save-btn", function() {
-  let resoObj = buildResoObj();
-  let savedId = this.id;
- console.log("reso Object", resoObj);
+  let resoID;
+  let resoFormObj = buildResoObj();
+  let savedId = $(this).attr("id");
+ console.log("reso Object", resoFormObj);
  console.log("saved Id: ", savedId);
-   editReso(resoObj)
-   .then((savedId) => {
-     console.log("edit ID: ", savedId);
+   editReso(resoFormObj, resoID)
+   .then((resoID) => {
+     console.log("saved ID: ", resoID);
     //  console.log("SAVE BUTTON CLICKED");
     showReso();
    });
@@ -398,6 +399,7 @@ $(document).on("click", ".delete-reso", function() {
 
   // After 3 seconds, remove the show class from DIV
   setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
+  showReso();
 });
 
 ///////////////////////////////////////////////////////
