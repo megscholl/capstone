@@ -230,7 +230,7 @@ $(document).on("click", "#userResos", function() {
 // EDIT RESERVATION IN FIREBASE
 ///////////////////////////////
 
-  function editReso(resoID, resoFormObj) {
+  function editReso(resoFormObj, resoID) {
     return $.ajax({
       url: `${firebase.getFBsettings().databaseURL}/reservations/${resoID}.json`,
       type: 'PUT',
@@ -259,7 +259,7 @@ $(document).on("click", ".save-btn", function() {
   let savedId = this.id;
  console.log("reso Object", resoObj);
  console.log("saved Id: ", savedId);
-   addReso(resoObj)
+   editReso(resoObj)
    .then((savedId) => {
      console.log("edit ID: ", savedId);
     //  console.log("SAVE BUTTON CLICKED");
