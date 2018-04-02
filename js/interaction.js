@@ -127,11 +127,22 @@ function setStatus(resoID) {
 $(document).on("click", ".check-in", function() {
   let checkintoReso = $(this).attr("id");
   // console.log("check in", checkintoReso);
-  setStatus(checkintoReso);
-  // .then(() => {
-  //   checkStatus();
+  setStatus(checkintoReso)
+  .then(() => {
   //   console.log("CHECK IN BUTTON CLICKED");
-  
+
+  // SNACKBAR (TOAST) NOTIFICATION WHEN RESO IS EDITED & SAVED
+  console.log("save toast coming through");
+
+  // Get the snackbar DIV
+  var snackCheck = document.getElementById("snackbar");
+
+  // Add the "show" class to DIV
+  snackCheck.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ snackCheck.className = snackCheck.className.replace("show", "");},3000);
+});
 });
 
 
@@ -203,8 +214,9 @@ seeResos += `
           </div>
           <div class="card-action">
             <a id="${uglyID}" class="check-in">Check in</a><a id="${uglyID}" class="edit">Edit</a> <a class="delete-reso" id="${uglyID}">Cancel</a>
-            <div id="snackbar">Your reservation has been deleted.
-            </div>
+            
+            <div id="snackbar">You've checked into your reservation!</div>
+            <div id="juicebar">Your reservation has been deleted!</div>
           </div>
       </div>
     </div>
@@ -222,7 +234,6 @@ $(document).on("click", "#userResos", function() {
   // console.log("merp");
   showReso();
 });
-
 
 
 
@@ -381,25 +392,22 @@ $(document).on("click", ".delete-reso", function() {
   // console.log("cancel", cancelReso);
   deleteReso(cancelReso)
   .then(() => {
-    showReso();
-    // console.log("CANCEL BUTTON CLICKED");
-  });
-});
-
-// SNACKBAR (TOAST) NOTIFICATION WHEN RESO DELETED
-$(document).on("click", ".delete-reso", function() {
-  // console.log("save toast coming through");
-
+    
   // Get the snackbar DIV
-  var snackSave = document.getElementById("snackbar");
+  var snackDelete = document.getElementById("juicebar");
 
   // Add the "show" class to DIV
-  snackSave.className = "show";
+  snackDelete.className = "show";
 
   // After 3 seconds, remove the show class from DIV
-  setTimeout(function(){ snackSave.className = snackSave.className.replace("show", "");},3000);
+  setTimeout(function(){ snackDelete.className = snackDelete.className.replace("show", "");},4000);
+
+    // console.log("CANCEL BUTTON CLICKED");
+  });
   showReso();
 });
+
+
 
 ///////////////////////////////////////////////////////
 
