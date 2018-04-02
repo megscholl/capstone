@@ -170,6 +170,19 @@ function getReso(reso) {
 function showReso() {
   getReso(event).then(function(rData) {
     console.log("rData", rData);
+    // for(var i = 0; i < rData.length; i++) {
+
+    //   let showNo = "";
+    //   rData = [];
+    //   let showResoLength = rData.length;
+
+    //   if(showResoLength === 1) {
+    //     showNo += `<div id="no-resos">You have no reservations. Make a reservation below!</div>`;
+    //   }else{
+    //     console.log("reservations should show up");
+    //   }
+    // }
+
     listResos(rData);
   });
 }
