@@ -3,7 +3,6 @@
 
 
 let $ = require('../lib/node_modules/jquery'),
-    user = require('./userProfile'),
     login = require('./user'),
     configure = require('./configure'), 
     firebaseKey = require('./firebaseKey'),
@@ -18,19 +17,41 @@ let $ = require('../lib/node_modules/jquery'),
 
 var userID = "";
 
+function checkUserFB(uid){
+  getFBDetails(uid)
+  .then((result) => {
+      let data = Object.values(result);
+       if (data.length === 0){
+          interactions.addUser(interactions.buildUserObj(result.user.uid))
+           .then((result) => {
+           });
+       }
+  });
+}
 
 $("#login-btn").click(function() {
     // console.log("Login button has been clicked");
     login.logInGoogle()
     .then((result) => {
-    //   console.log("result from login -", result.user.uid);
-      interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
-      login.setUser(result.user.uid);
-      userID = result.user.uid;
-    //   console.log("login setUser: ", userID);
-          $("#login-btn").addClass("d-none");
-          $("#userPic").removeClass("d-none").html(`<img src="${result.user.photoURL}" alt="${result.user.displayName} photo from Google" class="profPic rounded-circle">`);
-        //   console.log("login complete!");
+console.log("result: ", result);
+
+      getFBDetails(result.user.uid).then((kickback) => {
+        console.log("kickback: ", kickback);
+        let kickbackUser = Object.values(kickback);
+        console.log("kickbackUser: ", kickbackUser);
+
+        if(kickbackUser.length === 0) {
+             interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid));
+             login.setUser(result.user.uid);
+             userID = result.user.uid;
+             //   console.log("login setUser: ", userID);
+             $("#login-btn").addClass("d-none");
+        } 
+        else{
+          console.log("kickbackUser not 0");
+        }
+      });
+
       });
     });
 
@@ -38,13 +59,20 @@ $("#login-btn").click(function() {
         // console.log("logout clicked");
         login.logOut();
         // console.log("logged out?", userID);
-        $("#userPic").addClass("d-none");
         $("#login-btn").removeClass("d-none");
         $("#logout").addClass("d-none");
       });
 
 
-
+      function getFBDetails(user){
+        return $.ajax({
+            url: `${configure.getFBsettings().databaseURL}/users.json?orderBy="uid"&equalTo="${user}"`
+         }).done((resolve) => {
+            return resolve;
+         }).fail((error) => {
+            return error;
+         });
+      }
 // FUNCTION PLANNING
 
 /*
