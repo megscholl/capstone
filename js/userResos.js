@@ -17,10 +17,10 @@ console.log("userResos are showing here");
 let showRes = document.getElementById("upcomingReservations");
 
 function showUserResos() {
-    console.log("USER RESERVATIONS");
+    // console.log("USER RESERVATIONS");
     interaction.getReso()
     .then((userRes) => {
-        console.log("user reservations");
+        // console.log("user reservations");
         // if(uid === uid) {
             // SHOW UID'S 3 UPCOMING RESERVATIONS IN 'showRes'
         // }else {

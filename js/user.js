@@ -38,7 +38,7 @@ function setUser(val){
 }
 
 function getUser(){
-	console.log("current user: ", currentUser);
+	// console.log("current user: ", currentUser);
     return currentUser;
 }
 
