@@ -3,43 +3,83 @@
       {
         "id": 1,
         "restaurant": "Barcelona Wine Bar Edgehill",
-        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2016/11/Barcelona-Wine-Bar-Nashville-70.jpg"
+        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2016/11/Barcelona-Wine-Bar-Nashville-70.jpg",
+        "hours": "Monday-Friday 4PM-12AM, Saturday & Sunday 11AM-12AM",
+        "details": "Spanish small plates, paella, cocktails & wine are offered in an intimate, late-night setting.",
+        "address": "1200 Villa Pl #110, Nashville, TN 37212",
+        "phone": "(615) 327-0600"
       }, {
         "id": 2,
         "restaurant": "BrickTop's West End",
-        "url": "http://cdn.localeats.com/media/images/21222-1.jpg"
+        "url": "http://cdn.localeats.com/media/images/21222-1.jpg",
+        "hours": "Monday-Saturday 11AM-10PM, Sunday 10AM-9PM",
+        "details": "Upscale chain serving gourmet New American dishes in a stylish, contemporary setting.",
+        "address": "3000 West End Ave, Nashville, TN 37203",
+        "phone": "(615) 298-1000"
       }, {
         "id": 3,
         "restaurant": "Caviar & Bananas",
-        "url": "https://www.gannett-cdn.com/-mm-/17290dbe85a9217dee72a23f04eadbda0d798383/c=104-0-3497-2551&r=x393&c=520x390/local/-/media/2017/06/19/TennGroup/Nashville/636334853600121934-NAS-caviar-and-bananas.183.JPG"
+        "url": "https://www.gannett-cdn.com/-mm-/17290dbe85a9217dee72a23f04eadbda0d798383/c=104-0-3497-2551&r=x393&c=520x390/local/-/media/2017/06/19/TennGroup/Nashville/636334853600121934-NAS-caviar-and-bananas.183.JPG",
+        "hours": "Monday-Friday 7AM - 9PM, Saturday 8AM-9PM, Sunday 8AM-8:30PM",
+        "details": "Gourmet market & cafe offering a range of eats all day, plus wine and beer.",
+        "address": "2031 Broadway, Nashville, TN 37203",
+        "phone": "(615) 340-9005"
       }, {
         "id": 4,
         "restaurant": "Husk",
-        "url": "http://markboughtonphotography.com/wp-content/uploads/2013/07/HUSK-NASHVILLE-EXTERIOR-1.jpg"
+        "url": "http://markboughtonphotography.com/wp-content/uploads/2013/07/HUSK-NASHVILLE-EXTERIOR-1.jpg",
+        "hours": "Everyday 11AM-2PM, 5PM-10PM",
+        "details": "Regional ingredients cooked on an ember-fired grill create inventive meals in a historic mansion.",
+        "address": "37 Rutledge St, Nashville, TN 37210",
+        "phone": "(615) 256-6565"
       }, {
         "id": 5,
         "restaurant": "Merchants",
-        "url": "https://www.earthtrekkers.com/wp-content/uploads/2016/02/Merchants-Nashville.jpg"
+        "url": "https://www.earthtrekkers.com/wp-content/uploads/2016/02/Merchants-Nashville.jpg",
+        "hours": "Monday-Thursday 11AM-11PM, Friday 11AM-1AM, Saturday 10:30AM-1AM, Sunday 10AM-11PM",
+        "details": "Former hotel serves Southern takes on bistro food downstairs & more formal fare on the second floor.",
+        "address": "401 Broadway, Nashville, TN 37203",
+        "phone": "(615) 254-1892"
       }, {
         "id": 6,
         "restaurant": "PM",
-        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2011/07/Belmont-Nashville-TN-23.jpg"
+        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2011/07/Belmont-Nashville-TN-23.jpg",
+        "hours": "Everyday 11AM-12AM",
+        "details": "Hip, exposed-brick spot with a varied menu including pad Thai, sushi & burgers, plus cocktails.",
+        "address": "2017 Belmont Blvd, Nashville, TN 37212",
+        "phone": "(615) 297-2070S"
       }, {
         "id": 7,
         "restaurant": "Sambuca",
-        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2014/06/Gulch-Nashville-2015-68.jpg"
+        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2014/06/Gulch-Nashville-2015-68.jpg",
+        "hours": "Monday 4-10PM, Tuesday-Thursday 11AM-10PM, Friday & Saturday 11AM-11PM, Sunday 11AM-10PM",
+        "details": "Live music plays nightly at this sultry hot spot serving elevated American food & classic cocktails.",
+        "address": "601 12th Ave S, Nashville, TN 37203",
+        "phone": "(615) 248-2888"
       }, {
         "id": 8,
         "restaurant": "Smiling Elephant",
-        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2014/02/8th-Avenue-South-Nashville-6.jpg"
+        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2014/02/8th-Avenue-South-Nashville-6.jpg",
+        "hours": "Closed Sunday's. Monday 4:30-9PM, Tuesday-Thursday 11AM-2:30PM, 5-9PM, Friday 11AM-2:30PM, 4:30-9PM, Saturday 4:30-9PM",
+        "details": "Straightforward establishment whipping up health-conscious Thai classics in quaint quarters.",
+        "address": "2213 8th Ave S, Nashville, TN 37204",
+        "phone": "(615) 891-4488"
       }, {
         "id": 9,
         "restaurant": "Valentino's",
-        "url": "https://s3-media2.fl.yelpcdn.com/bphoto/PfDdr64vWXYZSMayo_aC9g/ls.jpg"
+        "url": "https://s3-media2.fl.yelpcdn.com/bphoto/PfDdr64vWXYZSMayo_aC9g/ls.jpg",
+        "hours": "Monday-Thursday & Saturdya's 5-10PM, Friday 11AM-2PM, 5-10PM, Sunday 5-9PM",
+        "details": "Upscale Italian restaurant starring housemade pastas & wines, plus live music 4 nights a week.",
+        "address": "1907 West End Ave, Nashville, TN 37203",
+        "phone": "(615) 327-0148"
       }, {
         "id": 10,
         "restaurant": "Watermark",
-        "url": "https://www.americascuisine.com/mobile_App/gallery/2815/app_pic1.jpg"
+        "url": "https://www.americascuisine.com/mobile_App/gallery/2815/app_pic1.jpg",
+        "hours": "Closed",
+        "details": "Elevated Southern fare in an elegant space with modern decor & popular outdoor seating.",
+        "address": "507 12th Ave S, Nashville, TN 37203",
+        "phone": "(615) 254-2000"
       }
     ]
 }
