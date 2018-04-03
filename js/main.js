@@ -33,22 +33,22 @@ $("#login-btn").click(function() {
     // console.log("Login button has been clicked");
     login.logInGoogle()
     .then((result) => {
-console.log("result: ", result);
+// console.log("result: ", result);
 
       getFBDetails(result.user.uid).then((kickback) => {
-        console.log("kickback: ", kickback);
+        // console.log("kickback: ", kickback);
         let kickbackUser = Object.values(kickback);
-        console.log("kickbackUser: ", kickbackUser);
+        // console.log("kickbackUser: ", kickbackUser);
 
         if(kickbackUser.length === 0) {
              interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid));
              login.setUser(result.user.uid);
              userID = result.user.uid;
              //   console.log("login setUser: ", userID);
-             $("#login-btn").addClass("d-none");
+            //  $("#login-btn").addClass("d-none");
         } 
         else{
-          console.log("kickbackUser not 0");
+          // console.log("kickbackUser not 0");
         }
       });
 
@@ -86,21 +86,9 @@ X FUNCTION TO RENDER THE BODY-CONTAINER DIV
 
 X AJAX FUNCTION TO 'GET' ESTAURANT INFORMATION // json imported to firebase
 
-* A FUNCTION TO 'POST' & 'PATCH' TO FIREBASE
+X A FUNCTION TO 'POST' & 'PATCH' TO FIREBASE
 
 X A FUNCTION TO 'DELETE' ITEMS FROM FIREBASE
 
 X A FUNCTION TO ALLOW USER TO CHECK-IN
-
-
-// // // // STRETCH GOALS \\ \\ \\ \\
-
-A FUNCTION TO VIEW ALL RESTAURANTS
-
-A FUNCTION TO VIEW ALL RESERVATIONS
-
-A FUNCTION TO VIEW ARCHIVED / PAST RESERVATIONS
-
-A FUNCTION TO SEND USER A REMINDER
-
 */
