@@ -98,6 +98,15 @@ function addUser(userObject) {
 $("#Reserve-btn").click(function() {
   let resObj = buildResoObj();
     addReso(resObj).then((resoID) => {
+        // Get the snackbar DIV
+  var snackReserve = document.getElementById("jelly");
+
+  // Add the "show" class to DIV
+  snackReserve.className = "show";
+
+  // After 3 seconds, remove the show class from DIV
+  setTimeout(function(){ snackReserve.className = snackReserve.className.replace("show", "");},4000);
+
       // console.log("the reserve table has been clicked", resObj);
       showReso();
     });
@@ -169,7 +178,7 @@ function getReso(reso) {
 
 function showReso() {
   getReso(event).then(function(rData) {
-    console.log("rData", rData);
+    // console.log("rData", rData);
     // for(var i = 0; i < rData.length; i++) {
 
     //   let showNo = "";
@@ -260,7 +269,7 @@ $(document).on("click", "#userResos", function() {
       type: 'PUT',
       data: JSON.stringify(resoFormObj)
     }).done((userID) => {
-      console.log("resoFormObj: ", resoFormObj);
+      // console.log("resoFormObj: ", resoFormObj);
       return userID;
     });
   }
@@ -269,9 +278,9 @@ $(document).on("click", "#userResos", function() {
   $(document).on("click", ".edit", function() {
     // console.log("EDIT BUTTON CLICKED");
     let savedId = $(this).attr("id");
-   console.log("saved Id: ", savedId);
+  //  console.log("saved Id: ", savedId);
       getReso(event).then(function(rData) {
-        console.log("edit rData", rData);
+        // console.log("edit rData", rData);
         saveEdit(rData);
       });
   });
@@ -282,11 +291,11 @@ $(document).on("click", ".save-btn", function() {
 
   let resoFormObj = buildResoObj();
   let savedId = $(this).attr("id");
- console.log("reso Object", resoFormObj);
- console.log("saved Id: ", savedId);
+//  console.log("reso Object", resoFormObj);
+//  console.log("saved Id: ", savedId);
    editReso(resoFormObj, savedId)
    .then((savedId) => {
-     console.log("firebase object: ", savedId);
+    //  console.log("firebase object: ", savedId);
     //  console.log("SAVE BUTTON CLICKED");
     showReso();
    });
@@ -381,7 +390,7 @@ $(document).on("click", ".save-btn", function() {
   setTimeout(function(){ 
     snackSave.className = snackSave.className.replace("show", "");},3000);
 
-    console.log("save snackbar");
+    // console.log("save snackbar");
 });
 
 
