@@ -35,11 +35,21 @@ function loopRestaurants() {
         for(var i = 0; i < rd.length; i++) {
             var restaurants = rd[i].restaurant;
             var image = rd[i].url;
+            var hours = rd[i].hours;
+            var details = rd[i].details;
+            var address = rd[i].address;
+            var phone = rd[i].phone;
             var id = rd[i].id;
             showAll += `
             <li>
             <div class="collapsible-header"><img src="${image}" width="100" height="80" style="float: left"><h5>${restaurants}</h5></div>
-            <div class="collapsible-body"><span>Just let this happen. We just let this flow right out of our minds. Life is too short to be alone, too precious. Share it with a friend. Working it up and down, back and forth. We'll put all the little clouds in and let them dance around and have fun. Just relax and let it flow. That easy.</span><br><br><br></div>
+            <div class="collapsible-body"><span>
+            <h6>${details}</h6>
+            <br>
+            <b>Hours:</b> ${hours}<br>
+            <b>Phone Number:</b> ${phone}<br>
+            <b>Address:</b> ${address}
+            </span><br><br><br></div>
             </li>`;
           }
               showRestaurants.innerHTML = showAll;
