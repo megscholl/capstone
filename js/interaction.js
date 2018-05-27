@@ -18,13 +18,21 @@ let $ = require('../lib/node_modules/jquery'),
     $('#login-btn').click(() => {
         userProfile();
     });
+
+    $("#logout").click(()=> {
+      // console.log("logout clicked");
+      user.logOut();
+      console.log("logged out");
+      $("#login-btn").removeClass("d-none");
+      $("#logout").addClass("d-none");
+    });
     
     function userProfile() {
         $('#thing').html(` <ul id="nav-mobile" class="right hide-on-med-and-down">
         <li><a href="#reservations" class="waves-effect waves-light btn">Make a Reservation</a></li>
         <li><a href="#nashvilleRestaurants" class="waves-effect waves-light btn">Nashville Restaurants</a></li>
         <li><a id="userResos" class="waves-effect waves-light btn">Upcoming Reservations</a></li>
-          <a id="logout" class="waves-effect waves-light btn">Logout</a></li>
+          <a id="logout" class="waves-effect waves-light btn d-none">Logout</a></li>
         </ul>`);
     }
     
@@ -291,12 +299,8 @@ $(document).on("click", ".save-btn", function() {
 
   let resoFormObj = buildResoObj();
   let savedId = $(this).attr("id");
-//  console.log("reso Object", resoFormObj);
-//  console.log("saved Id: ", savedId);
    editReso(resoFormObj, savedId)
    .then((savedId) => {
-    //  console.log("firebase object: ", savedId);
-    //  console.log("SAVE BUTTON CLICKED");
     showReso();
    });
  });
@@ -305,10 +309,7 @@ $(document).on("click", ".save-btn", function() {
 
 let formFields;
 
-// EDIT RESO FORM
 function saveEdit(rData) {
-  // console.log("save edit!");
-  // console.log("rdata FOR SAVE EDIT: ", rData);
 
   for(let reservation in rData){
 
@@ -318,10 +319,6 @@ function saveEdit(rData) {
     let eNum = rData[reservation].people;
     let eOcc = rData[reservation].occasion;
     let uglyeID = reservation;
-
-    // console.log("Edit User's reservation: ", "place: ", ePlace, "date: ", eDate, "time: ", eTime, "party of ", eNum, "occasion: ", eOcc);
-
-
   formFields = 
   `
   <div>

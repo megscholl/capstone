@@ -41,7 +41,7 @@ $("#login-btn").click(function() {
         // console.log("kickbackUser: ", kickbackUser);
 
         if(kickbackUser.length === 0) {
-             interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid));
+             interactions.addUser(interactions.buildUserObject(result.user.displayName, result.user.uid, result.user.photoURL));
              login.setUser(result.user.uid);
              userID = result.user.uid;
              //   console.log("login setUser: ", userID);
@@ -54,14 +54,6 @@ $("#login-btn").click(function() {
 
       });
     });
-
-    $(document).on("click", "#logout", ()=> {
-        // console.log("logout clicked");
-        login.logOut();
-        // console.log("logged out?", userID);
-        $("#login-btn").removeClass("d-none");
-        $("#logout").addClass("d-none");
-      });
 
 
       function getFBDetails(user){
