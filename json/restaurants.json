@@ -3,7 +3,7 @@
       {
         "id": 1,
         "restaurant": "Barcelona Wine Bar Edgehill",
-        "url": "http://nashvilleguru.com/officialwebsite/wp-content/uploads/2016/11/Barcelona-Wine-Bar-Nashville-70.jpg",
+        "url": "../images/barcelona.jpg",
         "hours": "Monday-Friday 4PM-12AM, Saturday & Sunday 11AM-12AM",
         "details": "Spanish small plates, paella, cocktails & wine are offered in an intimate, late-night setting.",
         "address": "1200 Villa Pl #110, Nashville, TN 37212",
