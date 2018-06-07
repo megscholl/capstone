@@ -1,10 +1,8 @@
 .DS_Store
-dist/
+
 lib/.sass-cache
 lib/node_modules
 lib/package-lock.json
-css/main.css
-css/main.css.map
-images/
+
 unusedJS.js
 readme-images/
