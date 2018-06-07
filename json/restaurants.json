@@ -11,7 +11,7 @@
       }, {
         "id": 2,
         "restaurant": "BrickTop's West End",
-        "url": "../images/bricktops.jpg",
+        "url": "images/bricktops.jpg",
         "hours": "Monday-Saturday 11AM-10PM, Sunday 10AM-9PM",
         "details": "Upscale chain serving gourmet New American dishes in a stylish, contemporary setting.",
         "address": "3000 West End Ave, Nashville, TN 37203",
